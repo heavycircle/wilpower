@@ -1,18 +1,29 @@
 export type SiteConfig = typeof siteConfig
 
 export const siteConfig = {
-  name: "Next.js",
-  description:
-    "Beautifully designed components built with Radix UI and Tailwind CSS.",
+  name: "Wil Power Sports Training",
+  description: "Compete to be Elite",
   mainNav: [
     {
-      title: "Home",
-      href: "/",
+      title: "About",
+      href: "/about",
+    },
+    {
+      title: "WP Championship Series",
+      href: "/wpcs",
+    },
+    {
+      title: "Health & Wellness",
+      href: "/health",
+    },
+    {
+      title: "Training",
+      href: "/training",
     },
   ],
   links: {
-    twitter: "https://twitter.com/shadcn",
-    github: "https://github.com/shadcn/ui",
-    docs: "https://ui.shadcn.com",
+    instagram: "https://instagram.com/wilpowersportstraining/",
+    phone: "tel:+16462103166",
+    mail: "mailto:will52nt@hotmail.com",
   },
 }
