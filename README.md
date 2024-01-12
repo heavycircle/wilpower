@@ -1,22 +1,7 @@
-# next-template
+# Wil Power Sports Training
 
-A Next.js 13 template for building apps with Radix UI and Tailwind CSS.
+*Website built for Wil Santi, a personal trainer in Nashville, TN.*
 
-## Usage
+## Technologies Used
 
-```bash
-npx create-next-app -e https://github.com/shadcn/next-template
-```
-
-## Features
-
-- Next.js 13 App Directory
-- Radix UI Primitives
-- Tailwind CSS
-- Icons from [Lucide](https://lucide.dev)
-- Dark mode with `next-themes`
-- Tailwind CSS class sorting, merging and linting.
-
-## License
-
-Licensed under the [MIT license](https://github.com/shadcn/ui/blob/main/LICENSE.md).
+The site is built using NextJS and React using Typescript.  The primary UI library is [shadcn](https://ui.shadcn.com/).  The site is self-hosted on an EC2 instance running Ubuntu 20.04.  The site is served using NGINX and is secured using Let's Encrypt.
