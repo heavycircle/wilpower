@@ -13,9 +13,11 @@ export type Icon = LucideIcon
 export const Icons = {
   sun: SunMedium,
   moon: Moon,
-  instagram: () => <InstagramIcon strokeWidth={1.75} />,
+  instagram: (props: LucideProps) => (
+    <InstagramIcon strokeWidth={1} {...props} />
+  ),
   phone: PhoneCallIcon,
-  mail: () => <MailIcon strokeWidth={1.75} />,
+  mail: (props: LucideProps) => <MailIcon strokeWidth={1.5} {...props} />,
   logo: (props: LucideProps) => (
     <svg viewBox="0  0  400 379.849" {...props}>
       <path
