@@ -13,10 +13,6 @@ export const siteConfig = {
       href: "/wpcs",
     },
     {
-      title: "Health & Wellness",
-      href: "/health",
-    },
-    {
       title: "Training",
       href: "/training",
     },

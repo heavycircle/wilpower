@@ -39,7 +39,7 @@ export function SiteHeader() {
                   variant: "ghost",
                 })}
               >
-                <Icons.mail className="h-5 w-5 fill-current" />
+                <Icons.mail className="h-5 w-5" />
                 <span className="sr-only">Email</span>
               </div>
             </Link>
@@ -54,7 +54,7 @@ export function SiteHeader() {
                   variant: "ghost",
                 })}
               >
-                <Icons.instagram className="h-5 w-5 fill-current" />
+                <Icons.instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
               </div>
             </Link>
