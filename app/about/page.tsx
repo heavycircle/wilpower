@@ -1,7 +1,3 @@
-import Link from "next/link"
-
-import { siteConfig } from "@/config/site"
-import { buttonVariants } from "@/components/ui/button"
 import { Icons } from "@/components/icons"
 
 export default function About() {
@@ -9,8 +5,8 @@ export default function About() {
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="mx-auto flex max-w-[980px] flex-col items-start gap-2">
         <div className="mb-4 items-center justify-center self-center text-center">
-          <h1 className="self-center text-5xl font-bold leading-tight">
-            WIL SANTI
+          <h1 className="self-center text-5xl font-semibold leading-tight">
+            THE <strong className="font-bold">WIL SANTI</strong> DIFFERENCE
           </h1>
           <h3 className="self-center text-2xl font-bold leading-tight">
             B.S., CSCS, CSPS, ACSM E-PHY, USAW 2, USATF I, USAPL SC, ISSN
@@ -50,9 +46,9 @@ export default function About() {
               Certified Exercise Physiologist through the American College of
               Sports Medicine (ACSM). Represents the gold standard by creating
               change for people throughout the entire training spectrum at an
-              advanced level, by conducting and interpreting physical
-              assessments and developing exercise prescriptions for those who
-              are healthy or have medically controlled diseases.
+              advanced level, conducting and interpreting physical assessments,
+              and developing exercise prescriptions for those who are healthy or
+              have medically controlled diseases.
             </p>
             <Icons.acsm className="h-24 w-auto flex-none object-contain" />
           </span>
@@ -61,7 +57,7 @@ export default function About() {
             <p className="flex-1 text-right">
               Certified USA Weightlifting Level 2 for Olympic and Functional
               Training. Expert level of teaching and coaching for all Olympic
-              lifts. Expert of teaching functional lifts and exercises for
+              lifts. Expert in teaching functional lifts and exercises for
               physical health and wellness.
             </p>
           </span>
@@ -69,7 +65,7 @@ export default function About() {
             <p className="flex items-center justify-center md:justify-end">
               Certified USA Track and Field Coach Level 1 for field and track
               events. Expert in teaching and coaching sprint and speed training
-              techniques for short, middle, and long distance running events and
+              techniques for short, middle, and long-distance running events and
               NFL combine training.
             </p>
             <Icons.usatf className="h-24 w-auto flex-none object-contain" />
@@ -86,7 +82,7 @@ export default function About() {
             <p className="flex items-center justify-center md:justify-end">
               Certified Sports Nutritionist with the working knowledge to take
               your fitness level or sports career to the next level.
-              Personalized Nutrition guides available to all clients.
+              Personalized Nutrition guides are available to all clients.
             </p>
             <Icons.issn className="h-24 w-auto flex-none object-contain" />
           </span>

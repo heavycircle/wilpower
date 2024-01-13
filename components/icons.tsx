@@ -1,10 +1,10 @@
 import {
-  InstagramIcon,
   LucideProps,
   MailIcon,
   Moon,
   PhoneCallIcon,
   SunMedium,
+  InstagramIcon,
   type Icon as LucideIcon,
 } from "lucide-react"
 
@@ -13,9 +13,7 @@ export type Icon = LucideIcon
 export const Icons = {
   sun: SunMedium,
   moon: Moon,
-  instagram: (props: LucideProps) => (
-    <InstagramIcon strokeWidth={1} {...props} />
-  ),
+  instagram: InstagramIcon,
   phone: PhoneCallIcon,
   mail: (props: LucideProps) => <MailIcon strokeWidth={1.5} {...props} />,
   bs: (props: LucideProps) => (
