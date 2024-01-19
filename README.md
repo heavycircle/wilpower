@@ -1,7 +1,20 @@
 # Wil Power Sports Training
 
-*Website built for Wil Santi, a personal trainer in Nashville, TN.*
+_Website built for Wil Santi, a personal trainer in Nashville, TN._
 
 ## Technologies Used
 
-The site is built using NextJS and React using Typescript.  The primary UI library is [shadcn](https://ui.shadcn.com/).  The site is self-hosted on an EC2 instance running Ubuntu 20.04.  The site is served using NGINX and is secured using Let's Encrypt.
+Front-End:
+
+- Next.js (Typescript)
+- React.js
+- shadcn UI with Tailwind CSS
+- Lucide Icons
+
+Deployment:
+
+- Vercel for Next.js
+- Vercel Speed Insights and Analytics
+- ESLint
+
+_Application is purely client-side and does not require a server._
