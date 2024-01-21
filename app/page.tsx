@@ -1,7 +1,7 @@
 import Image from "next/image"
 
-import { siteConfig } from "@/config/site"
 import { Icons } from "@/components/icons"
+import { siteConfig } from "@/config/site"
 
 export default function IndexPage() {
   return (
@@ -15,20 +15,20 @@ export default function IndexPage() {
           specializing in speed and agility training, weight training,
           powerlifting and plyometrics.
         </h3>
-        <div className="mx-auto flex w-full items-center justify-center gap-8 self-center">
-          <Image src="/portrait.webp" width={300} height={300} alt="Portrait" />
-          <div className="flex flex-col items-center justify-center">
-            <Icons.logo className="w-2/3" />
-            <Icons.weight className="w-96" />
+        <div className="mx-auto flex w-full flex-col items-center justify-center gap-8 self-center md:flex-row">
+          <Image src="/portrait.webp" width={300} height={300} alt="Portrait" className="order-2 md:order-none" />
+          <div className="order-1 flex items-center justify-center md:order-none md:flex-col">
+            <Icons.logo className="w-1/4 md:w-2/3" />
+            <Icons.weight className="w-3/4 md:w-96" />
           </div>
         </div>
-        <h3 className="self-center text-2xl font-medium leading-tight">
+        <h3 className="self-center text-center  text-2xl font-medium leading-tight">
           Speed/Agility Training
         </h3>
-        <h3 className="self-center text-2xl font-medium leading-tight">
+        <h3 className="self-center text-center text-2xl font-medium leading-tight">
           Weight, Power, and Plyometric Training
         </h3>
-        <h3 className="self-center text-2xl font-medium leading-tight">
+        <h3 className="self-center text-center  text-2xl font-medium leading-tight">
           Nutrition
         </h3>
         <h3 className="self-center text-2xl font-medium leading-tight">
