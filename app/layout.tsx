@@ -1,15 +1,15 @@
 import "@/styles/globals.css"
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Metadata } from "next"
 import Link from "next/link"
+import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
-import { SiteHeader } from "@/components/site-header"
-import { TailwindIndicator } from "@/components/tailwind-indicator"
-import { ThemeProvider } from "@/components/theme-provider"
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import { SiteHeader } from "@/components/site-header"
+import { TailwindIndicator } from "@/components/tailwind-indicator"
+import { ThemeProvider } from "@/components/theme-provider"
 
 export const metadata: Metadata = {
   title: {
@@ -49,8 +49,11 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
             <div className="my-4 ml-10">
               <p className="text-sm font-medium text-muted-foreground">
                 Designed 2024 by{" "}
-                <Link href="https://github.com/thecae">Cole Ellis</Link>.
-                Repository public.
+                <Link href="https://github.com/thecae">Cole Ellis</Link>.{" "}
+                <Link href="https://github.com/thecae/wilpower">
+                  Repository public
+                </Link>
+                .
               </p>
             </div>
           </div>
