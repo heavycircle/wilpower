@@ -24,18 +24,18 @@ const MobileHeader = () => {
   const router = useRouter()
   return (
     <Sheet>
-      <div className="flex items-center justify-between w-full px-4 py-3">
+      <div className="flex w-full items-center justify-between px-4 py-3">
         <SheetTrigger>
           <Menu className="h-10 w-10" />
         </SheetTrigger>
-        <h2 className="text-center text-3xl font-bold leading-tight flex-grow">
+        <h2 className="grow text-center text-3xl font-bold leading-tight">
           {siteConfig.name.toUpperCase()}
         </h2>
         <ThemeToggle />
       </div>
       <SheetContent side={"left"}>
         <SheetHeader className="my-4">
-          <SheetTitle className="flex justify-center gap-4">
+          <SheetTitle className="flex items-center justify-center gap-4">
             <Icons.logo className="h-8 w-8" />
             <span className="inline-block font-bold">{siteConfig.name}</span>
           </SheetTitle>
