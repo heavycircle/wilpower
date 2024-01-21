@@ -1,5 +1,5 @@
-import Image from "next/image"
 import { Icons } from "@/components/icons"
+import Image from "next/image"
 
 export default function WPCS() {
   return (
@@ -10,7 +10,7 @@ export default function WPCS() {
             THE WIL POWER CHAMPIONSHIP SERIES
           </h1>
         </div>
-        <Icons.weight className="w-1/4 self-center" />
+        <Icons.weight className="w-72 self-center" />
         <p className="text-center">
           The WPCS is a challenge for the Wil Power Championship belt. Every 3
           to 4 months, the championship belt is put up for grabs. To win the

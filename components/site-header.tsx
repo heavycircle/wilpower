@@ -1,13 +1,12 @@
 "use client"
 
+import { Menu } from "lucide-react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
-import { Menu } from "lucide-react"
 import { useMediaQuery } from "react-responsive"
 
-import { NavItem } from "@/types/nav"
-import { siteConfig } from "@/config/site"
-import { cn } from "@/lib/utils"
+import { Icons } from "@/components/icons"
+import { ThemeToggle } from "@/components/theme-toggle"
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
   Sheet,
@@ -17,8 +16,9 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet"
-import { Icons } from "@/components/icons"
-import { ThemeToggle } from "@/components/theme-toggle"
+import { siteConfig } from "@/config/site"
+import { cn } from "@/lib/utils"
+import { NavItem } from "@/types/nav"
 
 const MobileHeader = () => {
   const router = useRouter()
