@@ -12,10 +12,6 @@ export const siteConfig = {
       title: "WP Championship Series",
       href: "/wpcs",
     },
-    {
-      title: "Training",
-      href: "/training",
-    },
   ],
   links: {
     instagram: "https://instagram.com/wilpowersportstraining/",
