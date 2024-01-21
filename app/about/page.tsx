@@ -13,26 +13,26 @@ export default function About() {
           </h3>
         </div>
         <div className="mx-auto flex flex-col items-center justify-between self-center">
-          <span className="my-8 flex max-h-24 w-full items-center justify-between gap-8">
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
             <Icons.bs className="h-24 w-auto flex-none object-contain" />
-            <p className="flex-1 text-right">
+            <p className="flex-1 text-center sm:text-right">
               Bachelor of Science Degree in Exercise Science from the University
               of Rhode Island.
             </p>
           </span>
-          <span className="my-8 flex max-h-24 w-full items-center justify-between gap-8">
-            <p className="flex-1">
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
+            <Icons.cscs className="order-1 h-24 w-auto flex-none object-contain" />
+            <p className="order-2 flex-1 text-center sm:order-none sm:text-left">
               Certified Strength and Conditioning Specialist (CSCS) through the
               National Strength and Conditioning Association (NSCA). Certified
               to apply scientific knowledge to help improve athletic performance
               for athletes and health/fitness levels for those wanting to reach
               the peak of living a long, healthy life.
             </p>
-            <Icons.cscs className="h-24 w-auto flex-none object-contain" />
           </span>
-          <span className="my-8 flex max-h-24 w-full items-center justify-between gap-8">
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
             <Icons.csps className="h-24 w-24" />
-            <p className="flex-1 text-right">
+            <p className="flex-1 text-center sm:text-right">
               Certified for Special Populations Specialist through the National
               Strength and Conditioning Association (NSCA). Certified to assess,
               motivate, educate, and train special population clients of all
@@ -41,8 +41,9 @@ export default function About() {
               replacement, diabetes).
             </p>
           </span>
-          <span className="my-8 flex max-h-24 w-full items-center justify-between gap-8">
-            <p className="flex items-center justify-center md:justify-end">
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
+            <Icons.acsm className="order-1 h-24 w-auto flex-none object-contain" />
+            <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
               Certified Exercise Physiologist through the American College of
               Sports Medicine (ACSM). Represents the gold standard by creating
               change for people throughout the entire training spectrum at an
@@ -50,41 +51,40 @@ export default function About() {
               and developing exercise prescriptions for those who are healthy or
               have medically controlled diseases.
             </p>
-            <Icons.acsm className="h-24 w-auto flex-none object-contain" />
           </span>
-          <span className="my-8 flex max-h-24 w-full items-center justify-between gap-8">
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
             <Icons.usaw className="h-24 w-auto flex-none object-contain" />
-            <p className="flex-1 text-right">
+            <p className="flex-1 text-center sm:text-right">
               Certified USA Weightlifting Level 2 for Olympic and Functional
               Training. Expert level of teaching and coaching for all Olympic
               lifts. Expert in teaching functional lifts and exercises for
               physical health and wellness.
             </p>
           </span>
-          <span className="my-8 flex max-h-24 w-full items-center justify-between gap-8">
-            <p className="flex items-center justify-center md:justify-end">
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
+            <Icons.usatf className="order-1 h-24 w-auto flex-none object-contain" />
+            <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
               Certified USA Track and Field Coach Level 1 for field and track
               events. Expert in teaching and coaching sprint and speed training
               techniques for short, middle, and long-distance running events and
               NFL combine training.
             </p>
-            <Icons.usatf className="h-24 w-auto flex-none object-contain" />
           </span>
-          <span className="my-8 flex max-h-24 w-full items-center justify-between gap-8">
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
             <Icons.usapl className="h-24 w-auto flex-none object-contain" />
-            <p className="flex-1 text-right">
+            <p className="flex-1 text-center sm:text-right">
               Certified USA Powerlifting Senior Coach. Expert in teaching
               fundamentals, progression, variations, and techniques for the
               squat, bench press, and deadlift.
             </p>
           </span>
-          <span className="my-8 flex max-h-24 w-full items-center justify-between gap-8">
-            <p className="flex items-center justify-center md:justify-end">
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
+            <Icons.issn className="order-1 h-24 w-auto flex-none object-contain" />
+            <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
               Certified Sports Nutritionist with the working knowledge to take
               your fitness level or sports career to the next level.
               Personalized Nutrition guides are available to all clients.
             </p>
-            <Icons.issn className="h-24 w-auto flex-none object-contain" />
           </span>
         </div>
       </div>
