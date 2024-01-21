@@ -28,16 +28,18 @@ const MobileHeader = () => {
         <SheetTrigger>
           <Menu className="h-10 w-10" />
         </SheetTrigger>
-        <h2 className="grow text-center text-3xl font-bold leading-tight">
+        <h2 className="grow text-center text-2xl font-bold leading-tight sm:text-3xl">
           {siteConfig.name.toUpperCase()}
         </h2>
         <ThemeToggle />
       </div>
       <SheetContent side={"left"}>
         <SheetHeader className="my-4">
-          <SheetTitle className="flex items-center justify-center gap-4">
-            <Icons.logo className="h-8 w-8" />
-            <span className="inline-block font-bold">{siteConfig.name}</span>
+          <SheetTitle>
+            <Link href="/" className="flex items-center justify-center gap-4">
+              <Icons.logo className="h-8 w-8" />
+              <span className="inline-block font-bold">{siteConfig.name}</span>
+            </Link>
           </SheetTitle>
           <SheetDescription className="flex flex-col gap-2 text-muted-foreground">
             <Button

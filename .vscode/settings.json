@@ -2,8 +2,18 @@
   "typescript.tsdk": "../../node_modules/.pnpm/typescript@4.9.5/node_modules/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
   "cSpell.words": [
+    "ACSM",
+    "CSCS",
+    "CSPS",
+    "deadlift",
+    "ISSN",
+    "NSCA",
     "Plyometric",
     "powerlifting",
+    "SANTI",
+    "USAPL",
+    "USATF",
+    "USAW",
     "wpcs"
   ]
 }
