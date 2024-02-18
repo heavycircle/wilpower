@@ -41,11 +41,11 @@ export default function IndexPage() {
                   Speed and Agility Training
                 </CardTitle>
               </CardHeader>
-              <CardContent className="pt-0 grid gap-4">
-                <div className="text-right mt-2">
-                  <div className="grid-cols-5 grid justify-center items-center">
+              <CardContent className="grid gap-4 pt-0">
+                <div className="mt-2 text-right">
+                  <div className="grid grid-cols-5 items-center justify-center">
                     <div className="flex items-center">
-                      <CheckCircle className="w-7 h-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       Assessment of current flexibility level, running
@@ -53,9 +53,9 @@ export default function IndexPage() {
                     </p>
                   </div>
                   <Separator className="my-2" />
-                  <div className="grid-cols-5 grid">
+                  <div className="grid grid-cols-5">
                     <div className="flex items-center">
-                      <CheckCircle className="w-7 h-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       Individual-video study of speed, agility, plyometric and
@@ -63,9 +63,9 @@ export default function IndexPage() {
                     </p>
                   </div>
                   <Separator className="my-2" />
-                  <div className="grid-cols-5 grid">
+                  <div className="grid grid-cols-5">
                     <div className="flex items-center">
-                      <CheckCircle className="w-7 h-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       Dynamic warm-up movement, emphasizing increased
@@ -73,9 +73,9 @@ export default function IndexPage() {
                     </p>
                   </div>
                   <Separator className="my-2" />
-                  <div className="grid-cols-5 grid">
+                  <div className="grid grid-cols-5">
                     <div className="flex items-center">
-                      <CheckCircle className="w-7 h-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       Field work including- form running progression, proper
@@ -83,9 +83,9 @@ export default function IndexPage() {
                     </p>
                   </div>
                   <Separator className="my-2" />
-                  <div className="grid-cols-5 grid">
+                  <div className="grid grid-cols-5">
                     <div className="flex items-center">
-                      <CheckCircle className="w-7 h-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       Agility training, including- change of direction and
@@ -106,7 +106,7 @@ export default function IndexPage() {
                 <div className="mt-2 text-right">
                   <div className="grid grid-cols-5 items-center justify-center">
                     <div className="flex items-center">
-                      <CheckCircle className="h-7 w-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       Individualized nutrition program designed to meet each
@@ -116,7 +116,7 @@ export default function IndexPage() {
                   <Separator className="my-2" />
                   <div className="grid grid-cols-5">
                     <div className="flex items-center">
-                      <CheckCircle className="h-7 w-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       Nutritional supplements recommended to enhance performance
