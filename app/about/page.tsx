@@ -6,7 +6,8 @@ export default function About() {
       <div className="mx-auto flex max-w-[980px] flex-col items-start gap-2">
         <div className="mb-4 items-center justify-center self-center text-center">
           <h1 className="self-center text-5xl font-semibold leading-tight">
-            THE <strong className="font-bold text-primary">WIL SANTI</strong> DIFFERENCE
+            THE <strong className="font-bold text-primary">WIL SANTI</strong>{" "}
+            DIFFERENCE
           </h1>
           <h3 className="self-center text-2xl font-bold leading-tight">
             B.S., CSCS, CSPS, ACSM E-PHY, USAW 2, USATF I, USAPL SC, ISSN

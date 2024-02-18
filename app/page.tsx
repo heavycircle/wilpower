@@ -33,7 +33,7 @@ export default function IndexPage() {
             <Icons.weight className="w-3/4 md:w-96" />
           </div>
         </div>
-        <div className="flex flex-col sm:grid sm:grid-cols-2 gap-4">
+        <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2">
           <div className="flex flex-col items-center justify-center gap-4">
             <Card>
               <CardHeader className="text-center">
@@ -138,7 +138,7 @@ export default function IndexPage() {
                 <div className="mt-2 text-right">
                   <div className="grid grid-cols-5 items-center justify-center">
                     <div className="flex items-center">
-                      <CheckCircle className="h-7 w-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       Assessment of current strength level, identification of
@@ -148,7 +148,7 @@ export default function IndexPage() {
                   <Separator className="my-2" />
                   <div className="grid grid-cols-5">
                     <div className="flex items-center">
-                      <CheckCircle className="h-7 w-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       Proper form, technique and progression taught in explosive
@@ -158,7 +158,7 @@ export default function IndexPage() {
                   <Separator className="my-2" />
                   <div className="grid grid-cols-5">
                     <div className="flex items-center">
-                      <CheckCircle className="h-7 w-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       Foam rolling technique and proper warm-up and cool-down
@@ -178,7 +178,7 @@ export default function IndexPage() {
                 <div className="mt-2 text-right">
                   <div className="grid grid-cols-5 items-center justify-center">
                     <div className="flex items-center">
-                      <CheckCircle className="h-7 w-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       Training sessions are held at the athlete&apos;s home,
@@ -188,7 +188,7 @@ export default function IndexPage() {
                   <Separator className="my-2" />
                   <div className="grid grid-cols-5">
                     <div className="flex items-center">
-                      <CheckCircle className="h-7 w-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       I utilize facilities in and around the Nashville area and
@@ -199,7 +199,7 @@ export default function IndexPage() {
                   <Separator className="my-2" />
                   <div className="grid grid-cols-5">
                     <div className="flex items-center">
-                      <CheckCircle className="h-7 w-7" color={"#facc15"} />
+                      <CheckCircle className="size-7" color={"#facc15"} />
                     </div>
                     <p className="col-span-4">
                       I&apos;m also available to train school teams at their
