@@ -6,7 +6,8 @@ export default function About() {
       <div className="mx-auto flex max-w-[980px] flex-col items-start gap-2">
         <div className="mb-4 items-center justify-center self-center text-center">
           <h1 className="self-center text-5xl font-semibold leading-tight">
-            THE <strong className="font-bold text-primary">WIL SANTI</strong> DIFFERENCE
+            THE <strong className="font-bold text-primary">WIL SANTI</strong>{" "}
+            DIFFERENCE
           </h1>
           <h3 className="self-center text-2xl font-bold leading-tight">
             B.S., CSCS, CSPS, ACSM E-PHY, USAW 2, USATF I, USAPL SC, ISSN
@@ -35,7 +36,7 @@ export default function About() {
             </p>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.csps className="h-24 w-24" />
+            <Icons.csps className="size-24" />
             <p className="flex-1 text-center sm:text-right">
               <em className="text-primary">
                 Certified for Special Populations Specialist

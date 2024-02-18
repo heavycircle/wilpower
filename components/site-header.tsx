@@ -10,6 +10,7 @@ import { ThemeToggle } from "@/components/theme-toggle"
 import { Button, buttonVariants } from "@/components/ui/button"
 import {
   Sheet,
+  SheetClose,
   SheetContent,
   SheetDescription,
   SheetHeader,
@@ -26,7 +27,7 @@ const MobileHeader = () => {
     <Sheet>
       <div className="flex w-full items-center justify-between px-4 py-3">
         <SheetTrigger>
-          <Menu className="h-10 w-10" />
+          <Menu className="size-10" />
         </SheetTrigger>
         <h2 className="grow text-center text-2xl font-bold leading-tight sm:text-3xl">
           {siteConfig.name.toUpperCase()}
@@ -37,27 +38,31 @@ const MobileHeader = () => {
         <SheetHeader className="my-4">
           <SheetTitle>
             <Link href="/" className="flex items-center justify-center gap-4">
-              <Icons.logo className="h-8 w-8" />
+              <Icons.logo className="size-8" />
               <span className="inline-block font-bold">{siteConfig.name}</span>
             </Link>
           </SheetTitle>
           <SheetDescription className="flex flex-col gap-2 text-muted-foreground">
-            <Button
-              onClick={() => router.push("/about")}
-              rel="noreferrer"
-              className="w-full"
-              variant={"ghost"}
-            >
-              About
-            </Button>
-            <Button
-              onClick={() => router.push("/wpcs")}
-              rel="noreferrer"
-              className="w-full"
-              variant={"ghost"}
-            >
-              WP Championship Series
-            </Button>
+            <SheetClose asChild>
+              <Button
+                onClick={() => router.push("/about")}
+                rel="noreferrer"
+                className="w-full"
+                variant={"ghost"}
+              >
+                About
+              </Button>
+            </SheetClose>
+            <SheetClose asChild>
+              <Button
+                onClick={() => router.push("/wpcs")}
+                rel="noreferrer"
+                className="w-full"
+                variant={"ghost"}
+              >
+                WP Championship Series
+              </Button>
+            </SheetClose>
             <div className="mx-auto flex w-3/4 items-center justify-between">
               <Link
                 href={siteConfig.links.phone}
@@ -70,7 +75,7 @@ const MobileHeader = () => {
                     variant: "ghost",
                   })}
                 >
-                  <Icons.phone className="h-5 w-5" />
+                  <Icons.phone className="size-5" />
                   <span className="sr-only">Call Us!</span>
                 </div>
               </Link>
@@ -85,7 +90,7 @@ const MobileHeader = () => {
                     variant: "ghost",
                   })}
                 >
-                  <Icons.mail className="h-5 w-5" />
+                  <Icons.mail className="size-5" />
                   <span className="sr-only">Email</span>
                 </div>
               </Link>
@@ -100,7 +105,7 @@ const MobileHeader = () => {
                     variant: "ghost",
                   })}
                 >
-                  <Icons.instagram className="h-5 w-5" />
+                  <Icons.instagram className="size-5" />
                   <span className="sr-only">Instagram</span>
                 </div>
               </Link>
@@ -116,7 +121,7 @@ const DesktopHeader = () => (
   <div className="container flex h-16 items-center space-x-4 sm:justify-between sm:space-x-0">
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="flex items-center space-x-2">
-        <Icons.logo className="h-6 w-6" />
+        <Icons.logo className="size-6" />
         <span className="inline-block font-bold">{siteConfig.name}</span>
       </Link>
       {siteConfig.mainNav?.length ? (
@@ -148,7 +153,7 @@ const DesktopHeader = () => (
               variant: "ghost",
             })}
           >
-            <Icons.phone className="h-5 w-5" />
+            <Icons.phone className="size-5" />
             <span className="sr-only">Call Us!</span>
           </div>
         </Link>
@@ -159,7 +164,7 @@ const DesktopHeader = () => (
               variant: "ghost",
             })}
           >
-            <Icons.mail className="h-5 w-5" />
+            <Icons.mail className="size-5" />
             <span className="sr-only">Email</span>
           </div>
         </Link>
@@ -174,7 +179,7 @@ const DesktopHeader = () => (
               variant: "ghost",
             })}
           >
-            <Icons.instagram className="h-5 w-5" />
+            <Icons.instagram className="size-5" />
             <span className="sr-only">Instagram</span>
           </div>
         </Link>
