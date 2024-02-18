@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import { CheckCircle } from "lucide-react"
+import Balancer from "react-wrap-balancer"
 
 import { siteConfig } from "@/config/site"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -11,14 +12,16 @@ import { Icons } from "@/components/icons"
 export default function IndexPage() {
   return (
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="mx-auto flex max-w-[980px] flex-col items-start gap-2">
+      <div className="mx-auto flex max-w-[980px] flex-col items-center gap-2">
         <h1 className="self-center text-center text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
-          {siteConfig.name.toUpperCase()}
+          <Balancer>{siteConfig.name.toUpperCase()}</Balancer>
         </h1>
         <h3 className="text-center text-lg italic text-muted-foreground sm:text-xl md:text-2xl">
-          Nashville-based personal trainer with over two decades of experience -
-          specializing in speed and agility training, weight training,
-          powerlifting and plyometrics.
+          <Balancer>
+            Nashville-based personal trainer with over two decades of experience
+            - specializing in speed and agility training, weight training,
+            powerlifting and plyometrics.
+          </Balancer>
         </h3>
         <div className="mx-auto flex w-full flex-col items-center justify-center gap-8 self-center md:flex-row">
           <Image
@@ -38,7 +41,7 @@ export default function IndexPage() {
             <Card>
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl font-semibold">
-                  Speed and Agility Training
+                  <Balancer>Speed and Agility Training</Balancer>
                 </CardTitle>
               </CardHeader>
               <CardContent className="pt-0 grid gap-4">
@@ -99,7 +102,7 @@ export default function IndexPage() {
             <Card>
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl font-semibold">
-                  Nutrition
+                  <Balancer>Nutrition</Balancer>
                 </CardTitle>
               </CardHeader>
               <CardContent className="grid gap-4 pt-0">
@@ -131,7 +134,7 @@ export default function IndexPage() {
             <Card>
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl font-semibold">
-                  Weight, Power, & Plyometric Training
+                  <Balancer>Weight, Power, & Plyometric Training</Balancer>
                 </CardTitle>
               </CardHeader>
               <CardContent className="grid gap-4 pt-0">
@@ -171,7 +174,7 @@ export default function IndexPage() {
             <Card>
               <CardHeader className="text-center">
                 <CardTitle className="text-3xl font-semibold">
-                  Training Location
+                  <Balancer>Training Location</Balancer>
                 </CardTitle>
               </CardHeader>
               <CardContent className="grid gap-4 pt-0">
