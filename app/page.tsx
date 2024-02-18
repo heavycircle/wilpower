@@ -236,7 +236,7 @@ const Cards = () => (
 )
 
 const Testimonials = () => (
-  <div className="mx-auto flex w-5/6 flex-col justify-center gap-4">
+  <div className="mx-auto hidden w-5/6 justify-center gap-4 md:flex md:flex-col">
     <h2 className="text-center text-3xl font-semibold">Testimonials</h2>
     <Carousel
       opts={{ align: "center", loop: true }}
@@ -252,7 +252,7 @@ const Testimonials = () => (
             key={testimonial.name}
             className="basis-full md:basis-1/2 lg:basis-1/3"
           >
-            <Card className="flex h-full flex-col justify-between">
+            <Card className="flex size-full flex-col justify-between object-contain">
               <CardHeader />
               <CardContent
                 className="flex items-center justify-center text-center 
