@@ -36,7 +36,7 @@ export default function About() {
             </p>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.csps className="h-24 w-24" />
+            <Icons.csps className="size-24" />
             <p className="flex-1 text-center sm:text-right">
               <em className="text-primary">
                 Certified for Special Populations Specialist
