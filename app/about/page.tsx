@@ -1,3 +1,7 @@
+"use client"
+
+import Balancer from "react-wrap-balancer"
+
 import { Icons } from "@/components/icons"
 
 export default function About() {
@@ -5,8 +9,11 @@ export default function About() {
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="mx-auto flex max-w-[980px] flex-col items-start gap-2">
         <div className="mb-4 items-center justify-center self-center text-center">
-          <h1 className="self-center text-5xl font-semibold leading-tight">
-            THE <strong className="font-bold text-primary">WIL SANTI</strong> DIFFERENCE
+          <h1 className="self-center text-4xl font-semibold leading-tight md:text-5xl">
+            <Balancer>
+              THE <strong className="font-bold text-primary">WIL SANTI</strong>{" "}
+              DIFFERENCE
+            </Balancer>
           </h1>
           <h3 className="self-center text-2xl font-bold leading-tight">
             B.S., CSCS, CSPS, ACSM E-PHY, USAW 2, USATF I, USAPL SC, ISSN
