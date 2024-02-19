@@ -1,4 +1,7 @@
+"use client"
+
 import Image from "next/image"
+import Balancer from "react-wrap-balancer"
 
 import { Icons } from "@/components/icons"
 
@@ -8,8 +11,11 @@ export default function WPCS() {
       <div className="mx-auto flex max-w-[980px] flex-col items-start gap-2">
         <div className="items-center justify-center self-center text-center">
           <h1 className="self-center text-4xl font-bold leading-tight">
-            THE <strong className="text-primary">WIL POWER CHAMPIONSHIP</strong>{" "}
-            SERIES
+            <Balancer>
+              THE{" "}
+              <strong className="text-primary">WIL POWER CHAMPIONSHIP</strong>{" "}
+              SERIES
+            </Balancer>
           </h1>
         </div>
         <Icons.weight className="w-72 self-center" />
