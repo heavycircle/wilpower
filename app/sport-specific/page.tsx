@@ -266,7 +266,7 @@ export default function SportTraining() {
       <div className="mx-auto flex max-w-[980px] flex-col items-center gap-8">
         <Title />
         <LongText />
-        <Cards />
+        {/* <Cards /> */}
       </div>
     </section>
   )
