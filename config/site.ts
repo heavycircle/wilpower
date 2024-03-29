@@ -15,6 +15,10 @@ export const siteConfig = {
     {
       title: "Sport-Specific Training",
       href: "/sport-specific",
+    },
+    {
+      title: "Fitness & Wellness Training",
+      href: "/fitness-wellness",
     }
   ],
   links: {
