@@ -27,7 +27,7 @@ const Title = () => (
 const LongText = () => (
   <div className="flex flex-col gap-8">
     <div className="flex flex-col items-center md:grid md:grid-cols-3">
-      <h2 className="text-center text-2xl font-semibold">Fitness Training</h2>
+      <h2 className="text-center text-2xl font-semibold text-primary">Fitness Training</h2>
       <Balancer className="col-span-2 text-center">
         Take your health to the next level and truly see how great you can be.
         Included training types are kettlebell, interval, metabolic, 300
@@ -36,7 +36,7 @@ const LongText = () => (
       </Balancer>
     </div>
     <div className="flex flex-col items-center md:grid md:grid-cols-3">
-      <h2 className="text-center text-2xl font-semibold">Wellness Coaching</h2>
+      <h2 className="text-center text-2xl font-semibold text-primary">Wellness Coaching</h2>
       <Balancer className="col-span-2 text-center">
         Learn how to build healthy habits and implement them into your life.
         Learn how to manage your time to fit in a health and exercise program
@@ -44,7 +44,7 @@ const LongText = () => (
       </Balancer>
     </div>
     <div className="flex flex-col items-center md:grid md:grid-cols-3">
-      <h2 className="text-center text-2xl font-semibold">
+      <h2 className="text-center text-2xl font-semibold text-primary">
         Nutrition Counseling
       </h2>
       <Balancer className="col-span-2 text-center">
@@ -53,7 +53,7 @@ const LongText = () => (
       </Balancer>
     </div>
     <div className="flex flex-col items-center md:grid md:grid-cols-3">
-      <h2 className="text-center text-2xl font-semibold">
+      <h2 className="text-center text-2xl font-semibold text-primary">
         Corrective, Rehabilitative, or Special Populations Training
       </h2>
       <Balancer className="col-span-2 text-center">
