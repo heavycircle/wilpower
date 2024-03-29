@@ -19,7 +19,7 @@ export const DesktopHeader = () => (
       {siteConfig.mainNav?.length ? (
         <nav className="flex gap-6">
           {siteConfig.mainNav?.map(
-            (item: NavItem, index) =>
+            (item: NavItem) =>
               item.href && (
                 <Link
                   key={item.title}
