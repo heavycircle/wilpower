@@ -16,7 +16,7 @@ export default function About() {
             </Balancer>
           </h1>
           <h3 className="self-center text-2xl font-bold leading-tight">
-            B.S., CSCS, CSPS, ACSM E-PHY, USAW 2, USATF I, USAPL SC, ISSN
+            M.S., B.S., RSCC, CSCS, CSPS, ACSM E-PHY, USAW 2, USATF I, USAPL SC, ISSN
           </h3>
         </div>
         <div className="mx-auto flex flex-col items-center justify-between self-center">
