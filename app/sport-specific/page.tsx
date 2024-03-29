@@ -25,7 +25,7 @@ const Title = () => (
 
 const LongText = () => (
   <div className="flex flex-col gap-4">
-    <h3 className="text-center text-3xl font-semibold">
+    <h3 className="text-center text-3xl font-semibold text-primary">
       Speed and Agility Training
     </h3>
     <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
@@ -50,7 +50,7 @@ const LongText = () => (
         drills specific to demands of each sport
       </li>
     </ul>
-    <h3 className="text-center text-3xl font-semibold">
+    <h3 className="text-center text-3xl font-semibold text-primary">
       Weight, Power, and Plyometric Training
     </h3>
     <ul className="my-6 ml-6 list-disc [&>li]:mt-2">
@@ -67,9 +67,9 @@ const LongText = () => (
         each athletes work-out program
       </li>
     </ul>
-    <h3 className="text-center text-3xl font-semibold">Nutrition</h3>
+    <h3 className="text-center text-3xl font-semibold text-primary">Nutrition</h3>
     <p>Sports nutrition advice and counseling also available.</p>
-    <h3 className="text-center text-3xl font-semibold">Training Location</h3>
+    <h3 className="text-center text-3xl font-semibold text-primary">Training Location</h3>
     <p>
       I utilize facilities in and around the Nashville area and can train at a
       facility that best suits your schedule and type of training. I&apos;m also
