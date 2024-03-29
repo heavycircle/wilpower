@@ -5,7 +5,7 @@ export const siteConfig = {
   description: "Compete to be Elite",
   mainNav: [
     {
-      title: "About",
+      title: "About Wil Santi",
       href: "/about",
     },
     {

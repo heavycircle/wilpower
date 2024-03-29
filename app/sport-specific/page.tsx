@@ -24,7 +24,7 @@ const Title = () => (
 )
 
 const LongText = () => (
-  <div className="flex flex-col gap-4">
+  <div className="flex flex-col gap-4 text-lg">
     <h3 className="text-center text-3xl font-semibold text-primary">
       Speed and Agility Training
     </h3>
