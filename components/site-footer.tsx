@@ -1,16 +1,90 @@
 "use client"
 
-import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { signIn, signOut, useSession } from "next-auth/react"
+import { useMediaQuery } from "react-responsive"
+
+import { Button } from "@/components/ui/button"
+
+import { Icons } from "./icons"
 
 export function SiteFooter() {
+  const { data: session } = useSession()
+  const router = useRouter()
+  const mobile = useMediaQuery({ maxWidth: 700 })
+
   return (
-    <div className="my-4 ml-10">
-      <p className="text-sm font-medium text-muted-foreground">
-        Designed 2024 by{" "}
-        <Link href="https://github.com/thecae">Cole Ellis</Link>.{" "}
-        <Link href="https://github.com/thecae/wilpower">Repository public</Link>
-        .
-      </p>
-    </div>
+    <footer
+      className={`mt-2 flex justify-between border-t-[1px] p-4 ${
+        mobile && "flex-col gap-4"
+      }`}
+    >
+      <div className="flex items-center justify-center gap-2">
+        <Icons.logo className="size-12" />
+        <div className="flex flex-col">
+          <span className="text-sm font-bold">Wil Power Sports Training</span>
+          <span className="text-sm italic text-muted-foreground">
+            Site Designed by{" "}
+            <Button
+              variant="link"
+              onClick={() => router.replace("https://github.com/thecae")}
+              className="m-0 h-fit p-0 italic text-muted-foreground"
+            >
+              Cole Ellis
+            </Button>{" "}
+            (2024).{" "}
+            <Button
+              variant="link"
+              onClick={() =>
+                router.replace("https://github.com/thecae/wilpower")
+              }
+              className="m-0 h-fit p-0 italic text-muted-foreground"
+            >
+              Repository Public.
+            </Button>{" "}
+          </span>
+        </div>
+      </div>
+      <div
+        className={`flex flex-col justify-center ${
+          mobile ? "items-center" : "items-end"
+        }`}
+      >
+        {session ? (
+          <>
+            <span className="text-sm">
+              Logged in as{" "}
+              <b className="font-semibold">{session?.user?.name}</b>
+            </span>
+            <div className="flex gap-2">
+              <Button
+                variant={"outline"}
+                onClick={() => router.push("/admin")}
+                className="mt-1 text-xs"
+              >
+                Admin Console
+              </Button>
+              <Button
+                variant={"outline"}
+                onClick={() => signOut()}
+                className="mt-1 text-xs"
+              >
+                Sign Out
+              </Button>
+            </div>
+          </>
+        ) : (
+          <>
+            <Button
+              variant="link"
+              onClick={() => signIn("google")}
+              className="m-0 h-fit p-0 text-sm font-light text-foreground"
+            >
+              Not logged in.
+            </Button>
+          </>
+        )}
+      </div>
+    </footer>
   )
 }
