@@ -5,7 +5,7 @@ export const siteConfig = {
   description: "Compete to be Elite",
   mainNav: [
     {
-      title: "About",
+      title: "About Wil Santi",
       href: "/about",
     },
     {
@@ -15,6 +15,10 @@ export const siteConfig = {
     {
       title: "Sport-Specific Training",
       href: "/sport-specific",
+    },
+    {
+      title: "Fitness & Wellness Training",
+      href: "/fitness-wellness",
     }
   ],
   links: {
