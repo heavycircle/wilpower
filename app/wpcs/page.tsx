@@ -36,7 +36,7 @@ export default function WPCS() {
         </p>
         <Image
           className="mt-5 self-center"
-          src="/wpcs.webp"
+          src="/wpcs/wpcs.webp"
           alt="WPCS Belt"
           width={500}
           height={500}
