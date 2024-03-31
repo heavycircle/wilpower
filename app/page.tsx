@@ -1,16 +1,12 @@
 "use client"
 
-import Autoplay from "embla-carousel-autoplay"
+import React from "react"
 import Image from "next/image"
+import Autoplay from "embla-carousel-autoplay"
 import Balancer from "react-wrap-balancer"
 
-import { Icons } from "@/components/icons"
-import {
-  Card,
-  CardContent,
-  CardFooter,
-  CardHeader
-} from "@/components/ui/card"
+import { siteConfig } from "@/config/site"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -18,7 +14,8 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { siteConfig } from "@/config/site"
+import { Skeleton } from "@/components/ui/skeleton"
+import { Icons } from "@/components/icons"
 
 const Title = () => (
   <>
@@ -51,43 +48,88 @@ const Images = () => (
   </div>
 )
 
-const Testimonials = () => (
-  <div className="mx-auto hidden w-5/6 justify-center gap-4 md:flex md:flex-col">
-    <h2 className="text-center text-3xl font-semibold">Testimonials</h2>
-    <Carousel
-      opts={{ align: "center", loop: true }}
-      plugins={[
-        Autoplay({
-          delay: 5000,
-        }),
-      ]}
-    >
-      <CarouselContent>
-        {siteConfig.testimonials.map((testimonial) => (
-          <CarouselItem
-            key={testimonial.name}
-            className="basis-full md:basis-1/2 lg:basis-1/3"
-          >
-            <Card className="flex size-full flex-col justify-between object-contain">
-              <CardHeader />
-              <CardContent
-                className="flex items-center justify-center text-center 
-              text-lg italic xl:text-xl"
+interface Testimonial {
+  name: string
+  quote: string
+}
+
+const Testimonials = () => {
+  const [testimonials, setTestimonials] = React.useState<Testimonial[]>([])
+
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/api/testimonials")
+      const data = await res.json()
+      console.log('data', data);
+      if (res.ok) setTestimonials(data)
+    }
+    fetchData()
+  }, [])
+
+  if (testimonials.length === 0)
+    return (
+      <div className="mx-auto hidden w-5/6 justify-center gap-4 md:flex md:flex-col">
+        <h2 className="text-center text-3xl font-semibold">Testimonials</h2>
+        <Carousel
+          opts={{ align: "center", loop: true }}
+          plugins={[
+            Autoplay({
+              delay: 5000,
+            }),
+          ]}
+        >
+          <CarouselContent>
+            {[1, 2, 3].map((index) => (
+              <CarouselItem
+                key={index}
+                className="basis-full md:basis-1/2 lg:basis-1/3"
               >
-                {testimonial.quote}
-              </CardContent>
-              <CardFooter className="flex justify-center text-center text-xs uppercase">
-                {testimonial.name}
-              </CardFooter>
-            </Card>
-          </CarouselItem>
-        ))}
-      </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
-    </Carousel>
-  </div>
-)
+                <Skeleton className="size-[250px] rounded-xl" />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+        </Carousel>
+      </div>
+    )
+
+  return (
+    <div className="mx-auto hidden w-5/6 justify-center gap-4 md:flex md:flex-col">
+      <h2 className="text-center text-3xl font-semibold">Testimonials</h2>
+      <Carousel
+        opts={{ align: "center", loop: true }}
+        plugins={[
+          Autoplay({
+            delay: 5000,
+          }),
+        ]}
+      >
+        <CarouselContent>
+          {testimonials.map((testimonial) => (
+            <CarouselItem
+              key={testimonial.name}
+              className="basis-full md:basis-1/2 lg:basis-1/3"
+            >
+              <Card className="flex size-full flex-col justify-between object-contain">
+                <CardHeader />
+                <CardContent
+                  className="flex items-center justify-center text-center 
+              text-lg italic xl:text-xl"
+                >
+                  {testimonial.quote}
+                </CardContent>
+                <CardFooter className="flex justify-center text-center text-xs uppercase">
+                  {testimonial.name}
+                </CardFooter>
+              </Card>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
+    </div>
+  )
+}
 
 export default function IndexPage() {
   return (
