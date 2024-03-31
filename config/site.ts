@@ -23,6 +23,10 @@ export const siteConfig = {
     {
       title: "Merchandise",
       href: "/store",
+    },
+    {
+      title: "Contact",
+      href: "/contact",
     }
   ],
   links: {
