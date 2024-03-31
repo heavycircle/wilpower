@@ -30,19 +30,19 @@ const Title = () => (
 const ContactData = () => (
   <div className="grid items-center justify-center gap-2 md:grid-cols-3 md:gap-12">
     <Link href={siteConfig.links.instagram}>
-      <div className="flex gap-4 rounded-xl p-2 hover:bg-primary/30">
+      <div className="flex justify-center gap-4 rounded-xl p-2 hover:bg-primary/30">
         <InstagramIcon className="size-6" />
         <p>@wilpowersportstraining</p>
       </div>
     </Link>
     <Link href={siteConfig.links.phone}>
-      <div className="flex gap-4 rounded-xl p-2 hover:bg-primary/30">
+      <div className="flex justify-center gap-4 rounded-xl p-2 hover:bg-primary/30">
         <PhoneCallIcon className="size-6" />
         <p>(646) 210-3166</p>
       </div>
     </Link>
     <Link href={siteConfig.links.mail}>
-      <div className="flex gap-4 rounded-xl p-2 hover:bg-primary/30">
+      <div className="flex justify-center gap-4 rounded-xl p-2 hover:bg-primary/30">
         <MailIcon className="size-6" />
         <p>will52nt@hotmail.com</p>
       </div>
