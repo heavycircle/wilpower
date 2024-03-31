@@ -12,6 +12,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card"
+import { Skeleton } from "@/components/ui/skeleton"
 
 const Title = () => (
   <h1 className="self-center text-center text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
@@ -58,8 +59,25 @@ const Item = ({ item }: { item: ItemProps }) => {
   )
 }
 
+const StorePlaceholder = () => (
+  <div className="flex w-3/4 justify-center gap-16">
+    {[1, 2].map((i) => (
+      <Card className="flex w-full flex-col justify-between" key={i}>
+        <CardHeader className="m-0 p-0 pb-4">
+          <Skeleton className="h-[275px] w-80 rounded-xl" />
+        </CardHeader>
+        <CardContent className="flex items-center justify-between">
+          <Skeleton className="h-10 w-48 rounded-full" />
+          <Skeleton className="h-8 w-10 rounded-full" />
+        </CardContent>
+      </Card>
+    ))}
+  </div>
+)
+
 const Store = () => {
   const [store, setStore] = React.useState<ItemProps[]>([])
+  const [loading, setLoading] = React.useState<boolean>(true)
 
   // get the store
   React.useEffect(() => {
@@ -69,8 +87,10 @@ const Store = () => {
       console.log("data", data)
       if (res.ok) setStore(data)
     }
-    fetchData()
+    fetchData().then(() => setLoading(false))
   }, [])
+
+  if (loading) return <StorePlaceholder />
 
   return (
     <div className="grid w-3/4 grid-cols-2 justify-center gap-16">

@@ -66,53 +66,6 @@ export const MobileHeader = () => {
                 )}
               </nav>
             ) : null}
-            <div className="mx-auto flex w-3/4 items-center justify-between">
-              <Link
-                href={siteConfig.links.phone}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div
-                  className={buttonVariants({
-                    size: "icon",
-                    variant: "ghost",
-                  })}
-                >
-                  <Icons.phone className="size-5" />
-                  <span className="sr-only">Call Us!</span>
-                </div>
-              </Link>
-              <Link
-                href={siteConfig.links.mail}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div
-                  className={buttonVariants({
-                    size: "icon",
-                    variant: "ghost",
-                  })}
-                >
-                  <Icons.mail className="size-5" />
-                  <span className="sr-only">Email</span>
-                </div>
-              </Link>
-              <Link
-                href={siteConfig.links.instagram}
-                target="_blank"
-                rel="noreferrer"
-              >
-                <div
-                  className={buttonVariants({
-                    size: "icon",
-                    variant: "ghost",
-                  })}
-                >
-                  <Icons.instagram className="size-5" />
-                  <span className="sr-only">Instagram</span>
-                </div>
-              </Link>
-            </div>
           </SheetDescription>
         </SheetHeader>
       </SheetContent>
