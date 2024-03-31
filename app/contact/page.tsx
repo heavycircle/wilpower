@@ -7,12 +7,11 @@ import { useForm } from "react-hook-form"
 import Balancer from "react-wrap-balancer"
 import { z } from "zod"
 
-import { SiteConfig, siteConfig } from "@/config/site"
+import { siteConfig } from "@/config/site"
 import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -29,11 +28,11 @@ const Title = () => (
 )
 
 const ContactData = () => (
-  <div className="grid grid-cols-3 gap-12">
+  <div className="grid items-center justify-center gap-2 md:grid-cols-3 md:gap-12">
     <Link href={siteConfig.links.instagram}>
       <div className="flex gap-4 rounded-xl p-2 hover:bg-primary/30">
         <InstagramIcon className="size-6" />
-        <p>@wilpower</p>
+        <p>@wilpowersportstraining</p>
       </div>
     </Link>
     <Link href={siteConfig.links.phone}>
@@ -85,7 +84,7 @@ export const ContactForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        <div className="grid grid-cols-2 space-x-8">
+        <div className="grid gap-8 md:grid-cols-2">
           <FormField
             control={form.control}
             name="name"
@@ -157,7 +156,9 @@ export default function ContactPage() {
       <Title />
       <ContactData />
       <div className="relative flex h-6 w-full items-center justify-center">
-        <p className="absolute left-1/2 bg-background px-2 text-muted-foreground">OR</p>
+        <p className="absolute left-1/2 bg-background px-2 text-muted-foreground">
+          OR
+        </p>
         <Separator className="" />
       </div>
       <ContactForm />
