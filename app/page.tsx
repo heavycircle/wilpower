@@ -56,6 +56,7 @@ interface Testimonial {
 const Testimonials = () => {
   const [testimonials, setTestimonials] = React.useState<Testimonial[]>([])
 
+  // get the testimonials from the database
   React.useEffect(() => {
     const fetchData = async () => {
       const res = await fetch("/api/testimonials")

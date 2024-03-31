@@ -15,7 +15,11 @@ export const siteConfig = {
     {
       title: "Sport-Specific Training",
       href: "/sport-specific",
-    }
+    },
+    {
+      title: "Merchandise",
+      href: "/store",
+    },
   ],
   links: {
     instagram: "https://instagram.com/wilpowersportstraining/",
