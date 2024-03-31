@@ -5,7 +5,7 @@ export const siteConfig = {
   description: "Compete to be Elite",
   mainNav: [
     {
-      title: "About",
+      title: "About Wil Santi",
       href: "/about",
     },
     {
@@ -17,9 +17,13 @@ export const siteConfig = {
       href: "/sport-specific",
     },
     {
+      title: "Fitness & Wellness Training",
+      href: "/fitness-wellness",
+    },
+    {
       title: "Merchandise",
       href: "/store",
-    },
+    }
   ],
   links: {
     instagram: "https://instagram.com/wilpowersportstraining/",
