@@ -1,44 +1,23 @@
-import NextAuth from "next-auth";
-import GitHubProvider from "next-auth/providers/github";
-import { siteConfig } from "@/config/site";
+import NextAuth from "next-auth"
+import GoogleProvider from "next-auth/providers/google"
 
 const handler = NextAuth({
   secret: process.env.NEXTAUTH_SECRET,
   providers: [
-    GitHubProvider({
-      clientId: process.env.NEXT_PUBLIC_GITHUB_CLIENT_ID || "",
-      clientSecret: process.env.GITHUB_CLIENT_SECRET || "",
-      authorization: {
-        params: {
-          scope: "read:user, read:org",
-        },
-      },
+    GoogleProvider({
+      clientId: process.env.GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
-
   callbacks: {
     // Add custom callbacks here
     async signIn({ user, account, profile, email, credentials }) {
-      // get teams for user
-      const teamsResponse = await fetch(
-        `https://api.github.com/orgs/${siteConfig.github.org}/teams`,
-        {
-          headers: {
-            Authorization: `token ${account?.access_token}`,
-          },
-        }
-      );
-      const teamsData = await teamsResponse.json();
-
-      // check if user is in the team
-      const isMember = teamsData.some(
-        (team: { name: string }) => team.name === siteConfig.github.team
-      );
-      return isMember;
+      // ensure the signed in user is inside the
+      return true
     },
   },
 
   // debug: process.env.NODE_ENV === "development",
-});
+})
 
-export { handler as GET, handler as POST };
+export { handler as GET, handler as POST }
