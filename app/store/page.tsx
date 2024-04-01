@@ -5,6 +5,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import Balancer from "react-wrap-balancer"
 
+import type { Item } from "@/types/Item"
 import {
   Card,
   CardContent,
@@ -20,27 +21,12 @@ const Title = () => (
   </h1>
 )
 
-interface ImageProps {
-  url: string
-  description: string
-}
-
-interface ItemProps {
-  name: string
-  price: number
-  images: ImageProps[]
-}
-
-const urlConvert = (url: string) => {
-  return url.toLowerCase().replace(" ", "-")
-}
-
-const Item = ({ item }: { item: ItemProps }) => {
+const StoreItem = ({ item }: { item: Item }) => {
   const router = useRouter()
   return (
     <Card
       className="flex flex-col justify-between transition-all duration-500 hover:scale-105 hover:cursor-pointer hover:text-primary"
-      onClick={() => router.push(`/store/${urlConvert(item.name)}`)}
+      onClick={() => router.push(`/store/${item.inv}`)}
     >
       <CardHeader className="m-0 p-0 pb-4">
         <Image
@@ -76,7 +62,7 @@ const StorePlaceholder = () => (
 )
 
 const Store = () => {
-  const [store, setStore] = React.useState<ItemProps[]>([])
+  const [store, setStore] = React.useState<Item[]>([])
   const [loading, setLoading] = React.useState<boolean>(true)
 
   // get the store
@@ -95,7 +81,7 @@ const Store = () => {
   return (
     <div className="grid w-3/4 grid-cols-2 justify-center gap-16">
       {store.map((item) => (
-        <Item key={item.name} item={item} />
+        <StoreItem key={item.name} item={item} />
       ))}
     </div>
   )
