@@ -23,7 +23,7 @@ import { Textarea } from "@/components/ui/textarea"
 
 const Title = () => (
   <h1 className="self-center text-center text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
-    <Balancer>Contact Here!</Balancer>
+    <Balancer>Contact Me Here!</Balancer>
   </h1>
 )
 
@@ -63,7 +63,7 @@ const formSchema = z.object({
   questions: z.string().optional(),
 })
 
-export const ContactForm = () => {
+const ContactForm = () => {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
