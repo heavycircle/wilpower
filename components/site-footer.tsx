@@ -74,15 +74,13 @@ export function SiteFooter() {
             </div>
           </>
         ) : (
-          <>
-            <Button
-              variant="link"
-              onClick={() => signIn("google")}
-              className="m-0 h-fit p-0 text-sm font-light text-foreground"
-            >
-              Not logged in.
-            </Button>
-          </>
+          <Button
+            variant="link"
+            onClick={() => signIn("google")}
+            className="m-0 h-fit p-0 text-sm font-light text-foreground"
+          >
+            Not logged in.
+          </Button>
         )}
       </div>
     </footer>
