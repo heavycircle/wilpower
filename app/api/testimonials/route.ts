@@ -19,6 +19,50 @@ export const POST = async (req: Request) => {
     // connect to the database
     const client = await clientPromise
     const db = client.db("wilpower").collection("testimonials")
+
+    // add testimonial to database
+    const insert = await db.insertOne(body.data)
+    if (!insert.acknowledged)
+      return new NextResponse("Internal Server Error", { status: 500 })
+    return new NextResponse("Testimonial Inserted!", { status: 200 })
+  } catch (error) {
+    console.log(error)
+    return new NextResponse("Internal Server Error", { status: 500 })
+  }
+}
+
+export const PUT = async (req: Request) => {
+  try {
+    // validate request body
+    const schema = z.object({
+      id: z.string(),
+      name: z.string(),
+      quote: z.string(),
+    })
+    const body = schema.safeParse(await req.json())
+    if (!body.success)
+      return new NextResponse("Invalid Request Format", { status: 400 })
+
+    // connect to the database
+    const client = await clientPromise
+    const db = client.db("wilpower").collection("testimonials")
+
+    // convert the string ID to a MongoDB ObjectId
+    const { ObjectId } = require("mongodb")
+    const testimonialId = new ObjectId(body.data.id)
+
+    // attempt to update the testimonial
+    const res = await db.updateOne(
+      { _id: testimonialId },
+      { $set: { name: body.data.name, quote: body.data.quote } }
+    )
+    // Check if the update was successful
+    if (!res.acknowledged || res.matchedCount === 0) {
+      return new NextResponse("Testimonial Not Found or Update Failed", {
+        status: 404,
+      })
+    }
+    return new NextResponse("Testimonial Edited!", { status: 200 })
   } catch (error) {
     console.log(error)
     return new NextResponse("Internal Server Error", { status: 500 })

@@ -5,6 +5,7 @@ import Image from "next/image"
 import Autoplay from "embla-carousel-autoplay"
 import Balancer from "react-wrap-balancer"
 
+import type { Testimonial } from "@/types/Testimonial"
 import { siteConfig } from "@/config/site"
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import {
@@ -48,11 +49,6 @@ const Images = () => (
   </div>
 )
 
-interface Testimonial {
-  name: string
-  quote: string
-}
-
 const Testimonials = () => {
   const [testimonials, setTestimonials] = React.useState<Testimonial[]>([])
 
@@ -61,7 +57,7 @@ const Testimonials = () => {
     const fetchData = async () => {
       const res = await fetch("/api/testimonials")
       const data = await res.json()
-      console.log('data', data);
+      console.log("data", data)
       if (res.ok) setTestimonials(data)
     }
     fetchData()
@@ -69,7 +65,7 @@ const Testimonials = () => {
 
   if (testimonials.length === 0)
     return (
-      <div className="mx-auto hidden w-5/6 justify-center gap-4 md:flex md:flex-col">
+      <div className="mx-auto hidden w-full justify-center gap-4 md:flex md:flex-col">
         <h2 className="text-center text-3xl font-semibold">Testimonials</h2>
         <Carousel
           opts={{ align: "center", loop: true }}
@@ -94,7 +90,7 @@ const Testimonials = () => {
     )
 
   return (
-    <div className="mx-auto hidden w-5/6 justify-center gap-4 md:flex md:flex-col">
+    <div className="mx-auto hidden w-full justify-center gap-4 md:flex md:flex-col">
       <h2 className="text-center text-3xl font-semibold">Testimonials</h2>
       <Carousel
         opts={{ align: "center", loop: true }}
@@ -113,8 +109,8 @@ const Testimonials = () => {
               <Card className="flex size-full flex-col justify-between object-contain">
                 <CardHeader />
                 <CardContent
-                  className="flex items-center justify-center text-center 
-              text-lg italic xl:text-xl"
+                  className="flex items-center justify-center text-balance 
+              text-center text-lg italic xl:text-xl"
                 >
                   {testimonial.quote}
                 </CardContent>

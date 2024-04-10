@@ -9,10 +9,6 @@ export const siteConfig = {
       href: "/about",
     },
     {
-      title: "WP Championship Series",
-      href: "/wpcs",
-    },
-    {
       title: "Sport-Specific Training",
       href: "/sport-specific",
     },
@@ -21,13 +17,17 @@ export const siteConfig = {
       href: "/fitness-wellness",
     },
     {
+      title: "WP Championship Series",
+      href: "/wpcs",
+    },
+    {
       title: "Merchandise",
       href: "/store",
     },
     {
       title: "Contact",
       href: "/contact",
-    }
+    },
   ],
   links: {
     instagram: "https://instagram.com/wilpowersportstraining/",
