@@ -18,7 +18,8 @@ const Title = () => (
     <h3 className="text-center text-lg italic text-muted-foreground sm:text-xl md:text-2xl">
       <Balancer>
         Specialized training programs designed specifically for each person. All
-        conducted training and designed programs are by Wil Santi.
+        training sessions are conducted, and programs are written and expertly
+        designed by WIL SANTI.
       </Balancer>
     </h3>
   </>
@@ -27,7 +28,9 @@ const Title = () => (
 const LongText = () => (
   <div className="flex flex-col gap-8">
     <div className="flex flex-col items-center md:grid md:grid-cols-3">
-      <h2 className="text-center text-2xl font-semibold text-primary">Fitness Training</h2>
+      <h2 className="text-center text-2xl font-semibold text-primary">
+        Fitness Training
+      </h2>
       <Balancer className="col-span-2 text-center">
         Take your health to the next level and truly see how great you can be.
         Included training types are kettlebell, interval, metabolic, 300
@@ -36,7 +39,9 @@ const LongText = () => (
       </Balancer>
     </div>
     <div className="flex flex-col items-center md:grid md:grid-cols-3">
-      <h2 className="text-center text-2xl font-semibold text-primary">Wellness Coaching</h2>
+      <h2 className="text-center text-2xl font-semibold text-primary">
+        Wellness Coaching
+      </h2>
       <Balancer className="col-span-2 text-center">
         Learn how to build healthy habits and implement them into your life.
         Learn how to manage your time to fit in a health and exercise program
@@ -60,6 +65,20 @@ const LongText = () => (
         Training for chronic problems, disabilities, bodily alignment, joint
         replacement, joint repair, illness, and disease.
       </Balancer>
+    </div>
+    <div className="flex flex-col gap-4">
+      <h3 className="text-center text-3xl font-semibold text-primary">
+        Training Location
+      </h3>
+      <p>
+        I utilize facilities in and around the Nashville area and can train at a
+        facility that best suits your schedule and type of training. I&apos;m
+        also available to train school teams at their facilities or at local
+        athletic fields and tracks.
+      </p>
+      <p className="text-center text-xl font-medium italic">
+        Contact now for a free consultation!
+      </p>
     </div>
   </div>
 )
