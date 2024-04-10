@@ -25,9 +25,10 @@ const Title = () => (
     </h1>
     <h3 className="text-center text-lg italic text-muted-foreground sm:text-xl md:text-2xl">
       <Balancer>
-        Nashville-based personal trainer with over two decades of experience -
-        specializing in speed and agility training, weight training,
-        powerlifting and plyometrics.
+        Nashville-based strength and speed coach and trainer with over two
+        decades of experience - specializing in health/wellness/fitness
+        training, speed and agility training, weight training, powerlifting,
+        olympic lifts and plyometrics.
       </Balancer>
     </h3>
   </>
