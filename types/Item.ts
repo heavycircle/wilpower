@@ -13,8 +13,8 @@ export interface Quantity {
 }
 
 interface Description {
-    material: string
-    fit: string
+  material: string
+  fit: string
 }
 
 export interface Item {

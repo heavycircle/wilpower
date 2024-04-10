@@ -1,7 +1,7 @@
-"use client";
+"use client"
 
-import * as React from "react";
-import Image from "next/image";
+import * as React from "react"
+import Image from "next/image"
 
 const Spinner = () => (
   <svg className="size-80 animate-spin" viewBox="0 0 60 60">
@@ -14,7 +14,7 @@ const Spinner = () => (
       stroke="white"
     ></circle>
   </svg>
-);
+)
 
 export default function Loading() {
   return (
@@ -26,5 +26,5 @@ export default function Loading() {
         <Spinner />
       </div>
     </div>
-  );
+  )
 }
