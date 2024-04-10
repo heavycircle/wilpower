@@ -19,7 +19,7 @@ export const DesktopHeader = () => (
       {siteConfig.mainNav?.length ? (
         <nav className="flex gap-6">
           {siteConfig.mainNav?.map(
-            (item: NavItem, index) =>
+            (item: NavItem) =>
               item.href && (
                 <Link
                   key={item.title}
@@ -37,46 +37,7 @@ export const DesktopHeader = () => (
       ) : null}
     </div>
     <div className="flex flex-1 items-center justify-end space-x-4">
-      <nav className="flex items-center space-x-1">
-        <Link href={siteConfig.links.phone} target="_blank" rel="noreferrer">
-          <div
-            className={buttonVariants({
-              size: "icon",
-              variant: "ghost",
-            })}
-          >
-            <Icons.phone className="size-5" />
-            <span className="sr-only">Call Us!</span>
-          </div>
-        </Link>
-        <Link href={siteConfig.links.mail} target="_blank" rel="noreferrer">
-          <div
-            className={buttonVariants({
-              size: "icon",
-              variant: "ghost",
-            })}
-          >
-            <Icons.mail className="size-5" />
-            <span className="sr-only">Email</span>
-          </div>
-        </Link>
-        <Link
-          href={siteConfig.links.instagram}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <div
-            className={buttonVariants({
-              size: "icon",
-              variant: "ghost",
-            })}
-          >
-            <Icons.instagram className="size-5" />
-            <span className="sr-only">Instagram</span>
-          </div>
-        </Link>
-        <ThemeToggle />
-      </nav>
+      <ThemeToggle />
     </div>
   </div>
 )

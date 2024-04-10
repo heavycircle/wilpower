@@ -1,12 +1,13 @@
 import "@/styles/globals.css"
 import { Metadata } from "next"
-import Link from "next/link"
 import { Analytics } from "@vercel/analytics/react"
 import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { siteConfig } from "@/config/site"
 import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
+import NextAuthProvider from "@/components/auth-provider"
+import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -42,23 +43,16 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
           fontSans.variable
         )}
       >
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <div className="relative flex min-h-screen flex-col">
-            <SiteHeader />
-            <div className="flex-1">{children}</div>
-            <div className="my-4 ml-10">
-              <p className="text-sm font-medium text-muted-foreground">
-                Designed 2024 by{" "}
-                <Link href="https://github.com/thecae">Cole Ellis</Link>.{" "}
-                <Link href="https://github.com/thecae/wilpower">
-                  Repository public
-                </Link>
-                .
-              </p>
+        <NextAuthProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+            <div className="relative flex min-h-screen flex-col">
+              <SiteHeader />
+              <div className="flex-1">{children}</div>
+              <SiteFooter />
             </div>
-          </div>
-          <TailwindIndicator />
-        </ThemeProvider>
+            <TailwindIndicator />
+          </ThemeProvider>
+        </NextAuthProvider>
         <SpeedInsights />
         <Analytics />
       </body>
