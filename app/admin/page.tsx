@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-import { AlertCircle, CheckCircle } from "lucide-react"
+import { AlertCircle, CheckCircle, Delete } from "lucide-react"
 import Balancer from "react-wrap-balancer"
 
 import type { Testimonial } from "@/types/Testimonial"
@@ -40,7 +40,7 @@ const TableItem = ({ test }: { test: Testimonial }) => {
       <TableCell>{test.quote}</TableCell>
       <TableCell className="grid grid-cols-2 gap-2">
         <EditTestimonial testimonial={test} />
-        <Button className="">Delete</Button>
+        <DeleteTestimonial testimonial={test} />
       </TableCell>
     </TableRow>
   )
@@ -219,6 +219,61 @@ const EditTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
   )
 }
 
+const DeleteTestimonial = ({ testimonial }: { testimonial: Testimonial }) => {
+  const [error, setError] = React.useState<string>()
+  const [success, setSuccess] = React.useState<string>()
+
+  const onSubmit = async () => {
+    setError("")
+    setSuccess("")
+    const res = await fetch("/api/testimonials", {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: testimonial._id }),
+    })
+    if (!res.ok) setError(await res.text())
+    else setSuccess(await res.text())
+  }
+
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <Button>Delete</Button>
+      </DialogTrigger>
+      <DialogContent className="sm:max-w-[425px]">
+        <DialogHeader>
+          <DialogTitle>Delete Testimonial</DialogTitle>
+          <DialogDescription>
+            Are you sure you want to delete this testimonial?{" "}
+            <strong>This cannot be undone.</strong>
+          </DialogDescription>
+        </DialogHeader>
+        {error && (
+          <Alert variant="destructive">
+            <AlertCircle className="size-4" />
+            <AlertDescription className="font-semibold">
+              {error}
+            </AlertDescription>
+          </Alert>
+        )}
+        {success && (
+          <Alert variant="success">
+            <CheckCircle className="size-4" />
+            <AlertDescription className="font-semibold">
+              {success}
+            </AlertDescription>
+          </Alert>
+        )}
+        <DialogFooter>
+          <Button type="submit" onClick={onSubmit}>
+            Confirm Deletion
+          </Button>
+        </DialogFooter>
+      </DialogContent>
+    </Dialog>
+  )
+}
+
 const Testimonials = () => {
   const [testimonials, setTestimonials] = React.useState<Testimonial[]>([])
 
@@ -232,8 +287,6 @@ const Testimonials = () => {
     }
     fetchData()
   }, [])
-
-  console.log(testimonials)
 
   return (
     <div className="flex flex-col items-center gap-4">
