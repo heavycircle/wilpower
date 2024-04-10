@@ -18,6 +18,15 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
 
@@ -61,6 +70,21 @@ const formSchema = z.object({
     message: "Please enter your program goals here!",
   }),
   questions: z.string().optional(),
+  age: z.number(),
+  level: z.string().min(2, {
+    message: "Please enter your fitness level here!",
+  }),
+  routine: z.string().min(2, {
+    message: "Please enter your current routine here!",
+  }),
+  training: z.enum(["group", "individual"]).superRefine((val, ctx) => {
+    if (!["group", "individual"].includes(val)) {
+      ctx.addIssue({
+        code: z.ZodIssueCode.custom,
+        message: "Training must be either 'group' or 'individual'.",
+      })
+    }
+  }),
 })
 
 const ContactForm = () => {
@@ -71,6 +95,10 @@ const ContactForm = () => {
       email: "",
       goals: "",
       questions: "",
+      training: undefined,
+      age: 0,
+      level: "",
+      routine: "",
     },
   })
 
@@ -112,6 +140,76 @@ const ContactForm = () => {
             )}
           />
         </div>
+        <div className="grid gap-8 md:grid-cols-3">
+          <FormField
+            control={form.control}
+            name="training"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Desired Training Type</FormLabel>
+                <FormControl>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <SelectTrigger className="">
+                      <SelectValue placeholder="Select One..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="group">Group Training</SelectItem>
+                      <SelectItem value="individual">
+                        Individual Training
+                      </SelectItem>
+                    </SelectContent>
+                  </Select>
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="age"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Age</FormLabel>
+                <FormControl>
+                  <Input type="number" placeholder="18" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="level"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Fitness Level</FormLabel>
+                <FormControl>
+                  <Input placeholder="Absolute Beginner" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+        <FormField
+          control={form.control}
+          name="routine"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>
+                What is your current workout routine? Include your type of
+                training, frequency, etc.
+              </FormLabel>
+              <FormControl>
+                <Textarea placeholder="Routine Here..." {...field} />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="goals"

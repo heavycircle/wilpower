@@ -1,11 +1,10 @@
 "use client"
 
 import React from "react"
-import { AlertCircle, CheckCircle, Delete } from "lucide-react"
-import Balancer from "react-wrap-balancer"
+import { AlertCircle, CheckCircle } from "lucide-react"
 
 import type { Testimonial } from "@/types/Testimonial"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
