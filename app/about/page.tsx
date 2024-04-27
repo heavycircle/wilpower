@@ -9,7 +9,7 @@ export default function About() {
     <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
       <div className="mx-auto flex max-w-[980px] flex-col items-start gap-2">
         <div className="mb-4 items-center justify-center self-center text-center">
-          <h1 className="self-center text-4xl font-semibold leading-tight md:text-5xl">
+          <h1 className="self-center text-4xl font-semibold leading-tight md:text-6xl">
             <Balancer>
               THE <strong className="font-bold text-primary">WIL SANTI</strong>{" "}
               DIFFERENCE
@@ -21,28 +21,28 @@ export default function About() {
           </h3>
         </div>
         <div className="mx-auto flex flex-col items-center justify-between self-center">
-          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.ms className="h-24 w-auto flex-none object-contain" />
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
+            <Icons.MS className="h-44 w-auto flex-none object-contain" />
             <p className="flex-1 text-center sm:text-right">
-              <em className="text-primary">
-                Masters of Science Degree in Exercise Science
+              <em className="text-balance text-primary">
+                Masters of Sport and Human Movement Degree
               </em>{" "}
               from Cumberland University.
             </p>
           </span>
-          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.bs className="order-1 h-24 w-auto flex-none object-contain" />
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
+            <Icons.BS className="order-1 h-44 w-auto flex-none object-contain" />
             <p className="order-2 flex-1 text-center sm:order-none sm:text-left">
-              <em className="text-primary">
+              <em className="text-balance text-primary">
                 Bachelor of Science Degree in Exercise Science
               </em>{" "}
               from the University of Rhode Island.
             </p>
           </span>
-          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.rscc className="h-24 w-auto flex-none object-contain" />
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
+            <Icons.RSCC className="h-44 w-auto flex-none object-contain" />
             <p className="flex-1 text-center sm:text-right">
-              <em className="text-primary">
+              <em className="text-balance text-primary">
                 Registered Strength and Conditioning Coach
               </em>{" "}
               through the National Strength and Conditioning Association (NSCA).
@@ -51,10 +51,10 @@ export default function About() {
               sport performance.
             </p>
           </span>
-          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.cscs className="order-1 h-24 w-auto flex-none object-contain" />
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
+            <Icons.CSCS className="order-1 h-44 w-auto flex-none object-contain" />
             <p className="order-2 flex-1 text-center sm:order-none sm:text-left">
-              <em className="text-primary">
+              <em className="text-balance text-primary">
                 Certified Strength and Conditioning Specialist (CSCS)
               </em>{" "}
               through the National Strength and Conditioning Association (NSCA).
@@ -63,10 +63,10 @@ export default function About() {
               wanting to reach the peak of living a long, healthy life.
             </p>
           </span>
-          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.csps className="size-24" />
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
+            <Icons.CSPS className="size-44" />
             <p className="flex-1 text-center sm:text-right">
-              <em className="text-primary">
+              <em className="text-balance text-primary">
                 Certified for Special Populations Specialist
               </em>{" "}
               through the National Strength and Conditioning Association (NSCA).
@@ -76,10 +76,10 @@ export default function About() {
               (ex. heart disease, joint replacement, diabetes).
             </p>
           </span>
-          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.acsm className="order-1 h-24 w-auto flex-none object-contain" />
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
+            <Icons.ACSM className="order-1 h-44 w-auto flex-none object-contain" />
             <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
-              <em className="text-primary">Certified Exercise Physiologist</em>{" "}
+              <em className="text-balance text-primary">Certified Exercise Physiologist</em>{" "}
               through the American College of Sports Medicine (ACSM). Represents
               the gold standard by creating change for people throughout the
               entire training spectrum at an advanced level, conducting and
@@ -88,10 +88,10 @@ export default function About() {
               controlled diseases.
             </p>
           </span>
-          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.usaw className="h-24 w-auto flex-none object-contain" />
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
+            <Icons.USAW className="h-44 w-auto flex-none object-contain" />
             <p className="flex-1 text-center sm:text-right">
-              <em className="text-primary">
+              <em className="text-balance text-primary">
                 Certified USA Weightlifting Level 2 for Olympic and Functional
                 Training
               </em>
@@ -100,10 +100,10 @@ export default function About() {
               health and wellness.
             </p>
           </span>
-          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.usatf className="order-1 h-24 w-auto flex-none object-contain" />
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
+            <Icons.USATF className="order-1 h-44 w-auto flex-none object-contain" />
             <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
-              <em className="text-primary">
+              <em className="text-balance text-primary">
                 Certified USA Track and Field Coach Level 1 for field and track
                 events
               </em>
@@ -112,20 +112,20 @@ export default function About() {
               NFL combine training.
             </p>
           </span>
-          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.usapl className="h-24 w-auto flex-none object-contain" />
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
+            <Icons.USAPL className="h-44 w-auto flex-none object-contain" />
             <p className="flex-1 text-center sm:text-right">
-              <em className="text-primary">
+              <em className="text-balance text-primary">
                 Certified USA Powerlifting Senior Coach
               </em>
               . Expert in teaching fundamentals, progression, variations, and
               techniques for the squat, bench press, and deadlift.
             </p>
           </span>
-          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.issn className="order-1 h-24 w-auto flex-none object-contain" />
+          <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
+            <Icons.ISSN className="order-1 h-44 w-auto flex-none object-contain" />
             <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
-              <em className="text-primary">Certified Sports Nutritionist</em>{" "}
+              <em className="text-balance text-primary">Certified Sports Nutritionist</em>{" "}
               with the working knowledge to take your fitness level or sports
               career to the next level. Personalized Nutrition guides are
               available to all clients.

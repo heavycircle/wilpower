@@ -775,6 +775,25 @@
     "@babel/runtime" "^7.13.10"
     "@radix-ui/react-compose-refs" "1.0.1"
 
+"@radix-ui/react-toast@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@radix-ui/react-toast/-/react-toast-1.1.5.tgz#f5788761c0142a5ae9eb97f0051fd3c48106d9e6"
+  integrity sha512-fRLn227WHIBRSzuRzGJ8W+5YALxofH23y0MlPLddaIpLpCDqdE0NZlS2NRQDRiptfxDeeCjgFIpexB1/zkxDlw==
+  dependencies:
+    "@babel/runtime" "^7.13.10"
+    "@radix-ui/primitive" "1.0.1"
+    "@radix-ui/react-collection" "1.0.3"
+    "@radix-ui/react-compose-refs" "1.0.1"
+    "@radix-ui/react-context" "1.0.1"
+    "@radix-ui/react-dismissable-layer" "1.0.5"
+    "@radix-ui/react-portal" "1.0.4"
+    "@radix-ui/react-presence" "1.0.1"
+    "@radix-ui/react-primitive" "1.0.3"
+    "@radix-ui/react-use-callback-ref" "1.0.1"
+    "@radix-ui/react-use-controllable-state" "1.0.1"
+    "@radix-ui/react-use-layout-effect" "1.0.1"
+    "@radix-ui/react-visually-hidden" "1.0.3"
+
 "@radix-ui/react-use-callback-ref@1.0.1":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/@radix-ui/react-use-callback-ref/-/react-use-callback-ref-1.0.1.tgz#f4bb1f27f2023c984e6534317ebc411fc181107a"
@@ -847,6 +866,25 @@
   version "1.7.2"
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.7.2.tgz#2d4260033e199b3032a08b41348ac10de21c47e9"
   integrity sha512-RbhOOTCNoCrbfkRyoXODZp75MlpiHMgbE5MEBZAnnnLyQNgrigEj4p0lzsMDyc1zVsJDLrivB58tgg3emX0eEA==
+
+"@square/web-payments-sdk-types@^1.1.1":
+  version "1.55.1"
+  resolved "https://registry.yarnpkg.com/@square/web-payments-sdk-types/-/web-payments-sdk-types-1.55.1.tgz#8b15d76aebf967929360f1e07417277764162efe"
+  integrity sha512-fOwQPDMIhAPnMScMqeNcDTvaikh9anPeB55WZgfeORkviERkVqxGX7+qeO5i3tXUZ3X3mkQaKEWaRLvn/mBlSQ==
+  dependencies:
+    typescript "^4.9.5"
+
+"@square/web-sdk@^2.0.0":
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/@square/web-sdk/-/web-sdk-2.0.1.tgz#ef01fa6955ff0134a2aaf6e2227e9e96bb7e66a7"
+  integrity sha512-m+pauPLJUHO4qzBNKlHRMe+qDAhQdbEd7g/v/SW8BWZARwJC0liHB4AnVAJuM/7JMFEPiT2ZO3SRt1VQsCeoYg==
+  dependencies:
+    "@square/web-payments-sdk-types" "^1.1.1"
+
+"@stitches/react@^1.2.8":
+  version "1.2.8"
+  resolved "https://registry.yarnpkg.com/@stitches/react/-/react-1.2.8.tgz#954f8008be8d9c65c4e58efa0937f32388ce3a38"
+  integrity sha512-9g9dWI4gsSVe8bNLlb+lMkBYsnIKCZTmvqvDG+Avnn69XfmHZKiaMrx7cgTaddq7aTPPmXiTsbFcUy0xgI4+wA==
 
 "@swc/helpers@0.5.2":
   version "0.5.2"
@@ -2732,6 +2770,11 @@ node-releases@^2.0.14:
   resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-2.0.14.tgz#2ffb053bceb8b2be8495ece1ab6ce600c4461b0b"
   integrity sha512-y10wOWt8yZpqXmOgRo77WaHEmhYQYGNA6y421PKsKYWEK8aW+cqAphborZDhqfyKrbZEN92CN1X2KbafY2s7Yw==
 
+nodemailer@^6.9.13:
+  version "6.9.13"
+  resolved "https://registry.yarnpkg.com/nodemailer/-/nodemailer-6.9.13.tgz#5b292bf1e92645f4852ca872c56a6ba6c4a3d3d6"
+  integrity sha512-7o38Yogx6krdoBf3jCAqnIN4oSQFx+fMa0I7dK1D+me9kBxx12D+/33wSb+fhOCtIxvYJ+4x4IMEhmhCKfAiOA==
+
 normalize-path@^3.0.0, normalize-path@~3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/normalize-path/-/normalize-path-3.0.0.tgz#0dcd69ff23a1c9b11fd0978316644a0388216a65"
@@ -3090,6 +3133,14 @@ react-responsive@^9.0.2:
     matchmediaquery "^0.3.0"
     prop-types "^15.6.1"
     shallow-equal "^1.2.1"
+
+react-square-web-payments-sdk@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/react-square-web-payments-sdk/-/react-square-web-payments-sdk-3.2.1.tgz#bab3e162b71b557a457e500cd0fc4fb0400ff524"
+  integrity sha512-XhW4snpCfUNaVqS652dDWSWJd+r9OftkqmvP9hix5ISEV8Foo9QrGDe33t1w+uMIl9ox1EWlexGb0yDe8ZYamQ==
+  dependencies:
+    "@square/web-sdk" "^2.0.0"
+    "@stitches/react" "^1.2.8"
 
 react-style-singleton@^2.2.1:
   version "2.2.1"
