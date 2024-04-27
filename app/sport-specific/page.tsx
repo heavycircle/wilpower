@@ -138,7 +138,9 @@ const LongText = () => (
     <h3 className="text-center text-3xl font-semibold text-primary">
       Nutrition
     </h3>
-    <p className="text-center">Sports nutrition advice and counseling also available.</p>
+    <p className="text-center">
+      Sports nutrition advice and counseling also available.
+    </p>
     <PhotoCarousel />
     <h3 className="text-center text-3xl font-semibold text-primary">
       Training Location
