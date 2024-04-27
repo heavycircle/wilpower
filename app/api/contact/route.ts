@@ -18,7 +18,7 @@ export const POST = async (req: Request) => {
       message: "Please enter your program goals here!",
     }),
     questions: z.string().optional(),
-    age: z.number(),
+    age: z.string(),
     level: z.string().min(2, {
       message: "Please enter your fitness level here!",
     }),

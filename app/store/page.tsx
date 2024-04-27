@@ -78,7 +78,7 @@ const Store = () => {
   if (loading) return <StorePlaceholder />
 
   return (
-    <div className="grid w-3/4 grid-cols-2 justify-center gap-16">
+    <div className="grid w-3/4 justify-center gap-16 md:grid-cols-2">
       {store.map((item) => (
         <StoreItem key={item.name} item={item} />
       ))}
