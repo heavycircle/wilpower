@@ -1,8 +1,47 @@
 "use client"
 
+import Image from "next/image"
+import Autoplay from "embla-carousel-autoplay"
 import Balancer from "react-wrap-balancer"
 
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 import { Icons } from "@/components/icons"
+
+const PhotoCarousel = () => (
+  <Carousel
+    opts={{ align: "center", loop: true }}
+    plugins={[
+      Autoplay({
+        delay: 5000,
+      }),
+    ]}
+  >
+    <CarouselContent className="items-center">
+      {Array.from(Array(11).keys(), (key) => key + 1).map((num) => (
+        <CarouselItem
+          key={num}
+          className="basis-full md:basis-1/2 lg:basis-1/3"
+        >
+          <Image
+            src={`/fitness-carousel/fitness-${num}.jpg`}
+            alt={`Sport ${num}`}
+            height={934}
+            width={934}
+            className="h-full w-auto"
+          />
+        </CarouselItem>
+      ))}
+    </CarouselContent>
+    <CarouselPrevious />
+    <CarouselNext />
+  </Carousel>
+)
 
 const Title = () => (
   <>
@@ -63,6 +102,7 @@ const LongText = () => (
         replacement, joint repair, illness, and disease.
       </Balancer>
     </div>
+    <PhotoCarousel />
     <div className="flex flex-col gap-4">
       <h3 className="text-center text-3xl font-semibold text-primary">
         Training Location
