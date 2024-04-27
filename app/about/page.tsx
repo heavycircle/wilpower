@@ -22,7 +22,7 @@ export default function About() {
         </div>
         <div className="mx-auto flex flex-col items-center justify-between self-center">
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.ms className="h-24 w-auto flex-none object-contain" />
+            <Icons.MS className="h-24 w-auto flex-none object-contain" />
             <p className="flex-1 text-center sm:text-right">
               <em className="text-primary">
                 Masters of Science Degree in Exercise Science
@@ -31,7 +31,7 @@ export default function About() {
             </p>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.bs className="order-1 h-24 w-auto flex-none object-contain" />
+            <Icons.BS className="order-1 h-24 w-auto flex-none object-contain" />
             <p className="order-2 flex-1 text-center sm:order-none sm:text-left">
               <em className="text-primary">
                 Bachelor of Science Degree in Exercise Science
@@ -40,7 +40,7 @@ export default function About() {
             </p>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.rscc className="h-24 w-auto flex-none object-contain" />
+            <Icons.RSCC className="h-24 w-auto flex-none object-contain" />
             <p className="flex-1 text-center sm:text-right">
               <em className="text-primary">
                 Registered Strength and Conditioning Coach
@@ -52,7 +52,7 @@ export default function About() {
             </p>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.cscs className="order-1 h-24 w-auto flex-none object-contain" />
+            <Icons.CSCS className="order-1 h-24 w-auto flex-none object-contain" />
             <p className="order-2 flex-1 text-center sm:order-none sm:text-left">
               <em className="text-primary">
                 Certified Strength and Conditioning Specialist (CSCS)
@@ -64,7 +64,7 @@ export default function About() {
             </p>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.csps className="size-24" />
+            <Icons.CSPS className="size-24" />
             <p className="flex-1 text-center sm:text-right">
               <em className="text-primary">
                 Certified for Special Populations Specialist
@@ -77,7 +77,7 @@ export default function About() {
             </p>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.acsm className="order-1 h-24 w-auto flex-none object-contain" />
+            <Icons.ACSM className="order-1 h-24 w-auto flex-none object-contain" />
             <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
               <em className="text-primary">Certified Exercise Physiologist</em>{" "}
               through the American College of Sports Medicine (ACSM). Represents
@@ -89,7 +89,7 @@ export default function About() {
             </p>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.usaw className="h-24 w-auto flex-none object-contain" />
+            <Icons.USAW className="h-24 w-auto flex-none object-contain" />
             <p className="flex-1 text-center sm:text-right">
               <em className="text-primary">
                 Certified USA Weightlifting Level 2 for Olympic and Functional
@@ -101,7 +101,7 @@ export default function About() {
             </p>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.usatf className="order-1 h-24 w-auto flex-none object-contain" />
+            <Icons.USATF className="order-1 h-24 w-auto flex-none object-contain" />
             <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
               <em className="text-primary">
                 Certified USA Track and Field Coach Level 1 for field and track
@@ -113,7 +113,7 @@ export default function About() {
             </p>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.usapl className="h-24 w-auto flex-none object-contain" />
+            <Icons.USAPL className="h-24 w-auto flex-none object-contain" />
             <p className="flex-1 text-center sm:text-right">
               <em className="text-primary">
                 Certified USA Powerlifting Senior Coach
@@ -123,7 +123,7 @@ export default function About() {
             </p>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-24 sm:flex-row">
-            <Icons.issn className="order-1 h-24 w-auto flex-none object-contain" />
+            <Icons.ISSN className="order-1 h-24 w-auto flex-none object-contain" />
             <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
               <em className="text-primary">Certified Sports Nutritionist</em>{" "}
               with the working knowledge to take your fitness level or sports

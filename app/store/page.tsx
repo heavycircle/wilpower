@@ -70,7 +70,6 @@ const Store = () => {
     const fetchData = async () => {
       const res = await fetch("/api/store")
       const data = await res.json()
-      console.log("data", data)
       if (res.ok) setStore(data)
     }
     fetchData().then(() => setLoading(false))

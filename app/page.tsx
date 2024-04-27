@@ -44,8 +44,8 @@ const Images = () => (
       className="order-2 md:order-none"
     />
     <div className="order-1 flex items-center justify-center md:order-none md:flex-col">
-      <Icons.logo className="w-1/4 md:w-2/3" />
-      <Icons.weight className="w-3/4 md:w-96" />
+      <Icons.Logo className="w-1/4 md:w-2/3" />
+      <Icons.Weight className="w-3/4 md:w-96" />
     </div>
   </div>
 )
@@ -58,7 +58,6 @@ const Testimonials = () => {
     const fetchData = async () => {
       const res = await fetch("/api/testimonials")
       const data = await res.json()
-      console.log("data", data)
       if (res.ok) setTestimonials(data)
     }
     fetchData()

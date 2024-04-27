@@ -281,7 +281,6 @@ const Testimonials = () => {
     const fetchData = async () => {
       const res = await fetch("/api/testimonials")
       const data = await res.json()
-      console.log("data", data)
       if (res.ok) setTestimonials(data)
     }
     fetchData()

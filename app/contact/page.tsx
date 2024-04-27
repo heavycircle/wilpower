@@ -21,14 +21,13 @@ import { Input } from "@/components/ui/input"
 import {
   Select,
   SelectContent,
-  SelectGroup,
   SelectItem,
-  SelectLabel,
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
 import { Separator } from "@/components/ui/separator"
 import { Textarea } from "@/components/ui/textarea"
+import { useToast } from "@/components/ui/use-toast"
 
 const Title = () => (
   <h1 className="self-center text-center text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
@@ -39,19 +38,19 @@ const Title = () => (
 const ContactData = () => (
   <div className="grid items-center justify-center gap-2 md:grid-cols-3 md:gap-12">
     <Link href={siteConfig.links.instagram}>
-      <div className="flex justify-center gap-4 rounded-xl p-2 hover:bg-primary/30">
+      <div className="flex justify-center gap-4 rounded-xl p-2 transition-all hover:bg-primary/30">
         <InstagramIcon className="size-6" />
         <p>@wilpowersportstraining</p>
       </div>
     </Link>
     <Link href={siteConfig.links.phone}>
-      <div className="flex justify-center gap-4 rounded-xl p-2 hover:bg-primary/30">
+      <div className="flex justify-center gap-4 rounded-xl p-2 transition-all hover:bg-primary/30">
         <PhoneCallIcon className="size-6" />
         <p>(646) 210-3166</p>
       </div>
     </Link>
     <Link href={siteConfig.links.mail}>
-      <div className="flex justify-center gap-4 rounded-xl p-2 hover:bg-primary/30">
+      <div className="flex justify-center gap-4 rounded-xl p-2 transition-all hover:bg-primary/30">
         <MailIcon className="size-6" />
         <p>will52nt@hotmail.com</p>
       </div>
@@ -88,6 +87,8 @@ const formSchema = z.object({
 })
 
 const ContactForm = () => {
+  const { toast } = useToast()
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -102,11 +103,16 @@ const ContactForm = () => {
     },
   })
 
-  // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
-    console.log(values)
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    const submit = await fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(values),
+      headers: { "Content-Type": "application/json" },
+    })
+    toast({
+      variant: submit.ok ? "default" : "destructive",
+      description: await submit.text(),
+    })
   }
 
   return (
