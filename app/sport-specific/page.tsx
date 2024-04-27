@@ -9,7 +9,7 @@ import { Icons } from "@/components/icons"
 
 const Title = () => (
   <>
-    <Icons.logo className="w-1/6" />
+    <Icons.Logo className="w-1/6" />
     <h1 className="self-center text-center text-3xl font-bold italic leading-tight sm:text-4xl md:text-5xl">
       <Balancer>&quot;Compete to Be Elite&quot;</Balancer>
     </h1>

@@ -18,8 +18,8 @@ export default function WPCS() {
             </Balancer>
           </h1>
         </div>
-        <Icons.weight className="w-72 self-center" />
-        <p className="text-center">
+        <Icons.Weight className="w-72 self-center" />
+        <p className="text-balance text-center">
           The <em className="text-primary">WPCS</em> is a challenge for the Wil
           Power Championship belt. Every 3 to 4 months, the championship belt is
           put up for grabs. To win the belt, you must win the month-long

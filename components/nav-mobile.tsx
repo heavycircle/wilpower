@@ -21,6 +21,8 @@ import {
 import { Icons } from "@/components/icons"
 import { ThemeToggle } from "@/components/theme-toggle"
 
+import { CheckoutButton } from "./checkout-button"
+
 export const MobileHeader = () => {
   const router = useRouter()
   return (
@@ -32,6 +34,7 @@ export const MobileHeader = () => {
         <h2 className="grow text-center text-2xl font-bold leading-tight sm:text-3xl">
           <Balancer>{siteConfig.name.toUpperCase()}</Balancer>
         </h2>
+        <CheckoutButton />
         <ThemeToggle />
       </div>
       <SheetContent side={"left"}>
@@ -39,7 +42,7 @@ export const MobileHeader = () => {
           <SheetTitle>
             <SheetClose asChild>
               <Link href="/" className="flex items-center justify-center gap-4">
-                <Icons.logo className="size-8" />
+                <Icons.Logo className="size-8" />
                 <span className="inline-block font-bold">
                   <Balancer>{siteConfig.name}</Balancer>
                 </span>
@@ -52,7 +55,7 @@ export const MobileHeader = () => {
                 {siteConfig.mainNav?.map(
                   (item: NavItem) =>
                     item.href && (
-                      <SheetClose asChild>
+                      <SheetClose key={item.title} asChild>
                         <Button
                           onClick={() => router.push(item.href ?? "/")}
                           rel="noreferrer"

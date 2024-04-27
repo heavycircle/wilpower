@@ -20,7 +20,7 @@ export function SiteFooter() {
       }`}
     >
       <div className="flex items-center justify-center gap-2">
-        <Icons.logo className="size-12" />
+        <Icons.Logo className="size-12" />
         <div className="flex flex-col">
           <span className="text-sm font-bold">Wil Power Sports Training</span>
           <span className="text-sm italic text-muted-foreground">
