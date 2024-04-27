@@ -72,7 +72,7 @@ const LongText = () => (
       </li>
       <li>Group and team training, one on one, one on two, and up</li>
     </ul>
-    <div className="grid grid-cols-2 items-center gap-8">
+    <div className="grid items-center gap-8 md:grid-cols-2">
       <div className="flex flex-col gap-4">
         <h3 className="text-center text-3xl font-semibold text-primary">
           Speed and Agility Training
@@ -107,14 +107,15 @@ const LongText = () => (
         width={877}
       />
     </div>
-    <div className="grid grid-cols-2 items-center gap-8">
+    <div className="grid items-center gap-8 md:grid-cols-2">
       <Image
         src="/sport-carousel/main-2.jpg"
         alt="Power Training"
         height={934}
         width={934}
+        className="order-1"
       />
-      <div className="flex flex-col gap-4">
+      <div className="order-none flex flex-col gap-4 md:order-2">
         <h3 className="text-balance text-center text-3xl font-semibold text-primary">
           Weight, Power, and Plyometric Training
         </h3>
@@ -137,7 +138,7 @@ const LongText = () => (
     <h3 className="text-center text-3xl font-semibold text-primary">
       Nutrition
     </h3>
-    <p>Sports nutrition advice and counseling also available.</p>
+    <p className="text-center">Sports nutrition advice and counseling also available.</p>
     <PhotoCarousel />
     <h3 className="text-center text-3xl font-semibold text-primary">
       Training Location

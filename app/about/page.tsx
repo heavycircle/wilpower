@@ -79,7 +79,9 @@ export default function About() {
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
             <Icons.ACSM className="order-1 h-44 w-auto flex-none object-contain" />
             <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
-              <em className="text-balance text-primary">Certified Exercise Physiologist</em>{" "}
+              <em className="text-balance text-primary">
+                Certified Exercise Physiologist
+              </em>{" "}
               through the American College of Sports Medicine (ACSM). Represents
               the gold standard by creating change for people throughout the
               entire training spectrum at an advanced level, conducting and
@@ -125,7 +127,9 @@ export default function About() {
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
             <Icons.ISSN className="order-1 h-44 w-auto flex-none object-contain" />
             <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
-              <em className="text-balance text-primary">Certified Sports Nutritionist</em>{" "}
+              <em className="text-balance text-primary">
+                Certified Sports Nutritionist
+              </em>{" "}
               with the working knowledge to take your fitness level or sports
               career to the next level. Personalized Nutrition guides are
               available to all clients.
