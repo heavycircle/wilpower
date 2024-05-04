@@ -51,6 +51,11 @@
   }
 }
 
+.responsive-image {
+  width: calc(100vw / 2) !important;
+  max-width: 420px;
+}
+
 @layer base {
   * {
     @apply border-border;

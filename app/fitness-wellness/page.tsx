@@ -33,7 +33,7 @@ const PhotoCarousel = () => (
             alt={`Sport ${num}`}
             height={934}
             width={934}
-            className="h-full w-auto"
+            className="h-full w-auto rounded-xl"
           />
         </CarouselItem>
       ))}
@@ -122,8 +122,8 @@ const LongText = () => (
 
 export default function FitnessWellness() {
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="mx-auto flex max-w-[980px] flex-col items-center gap-8">
+    <section className="mx-auto grid w-3/4 items-center gap-6 pb-8 pt-6 text-xl md:py-10">
+      <div className="mx-auto flex flex-col items-center gap-8">
         <Title />
         <LongText />
       </div>

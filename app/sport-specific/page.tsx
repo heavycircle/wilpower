@@ -36,7 +36,7 @@ const PhotoCarousel = () => (
             alt={`Sport ${num}`}
             height={934}
             width={934}
-            className="h-full w-auto"
+            className="h-full w-auto rounded-xl"
           />
         </CarouselItem>
       ))}
@@ -105,6 +105,7 @@ const LongText = () => (
         alt="Speed and Agility"
         height={1022}
         width={877}
+        className="rounded-xl"
       />
     </div>
     <div className="grid items-center gap-8 md:grid-cols-2">
@@ -113,7 +114,7 @@ const LongText = () => (
         alt="Power Training"
         height={934}
         width={934}
-        className="order-1"
+        className="order-1 rounded-xl"
       />
       <div className="order-none flex flex-col gap-4 md:order-2">
         <h3 className="text-balance text-center text-3xl font-semibold text-primary">

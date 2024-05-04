@@ -33,7 +33,7 @@ const PhotoCarousel = () => (
             alt={`Sport ${num}`}
             height={934}
             width={934}
-            className="h-full w-auto"
+            className="h-full w-auto rounded-xl"
           />
         </CarouselItem>
       ))}
@@ -45,10 +45,10 @@ const PhotoCarousel = () => (
 
 export default function WPCS() {
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="mx-auto flex max-w-[980px] flex-col items-start gap-2">
+    <section className="mx-auto grid w-3/4 items-center gap-6 pb-8 pt-6 text-xl md:py-10">
+      <div className="mx-auto flex flex-col items-center gap-8">
         <div className="items-center justify-center self-center text-center">
-          <h1 className="self-center text-4xl font-bold leading-tight">
+          <h1 className="self-center text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
             <Balancer>
               THE{" "}
               <strong className="text-primary">WIL POWER CHAMPIONSHIP</strong>{" "}
@@ -56,7 +56,17 @@ export default function WPCS() {
             </Balancer>
           </h1>
         </div>
-        <Icons.Weight className="w-72 self-center" />
+        <div className="flex w-full flex-col items-center justify-between sm:w-11/12 md:w-3/4 md:flex-row lg:w-2/3">
+          <Icons.Weight className="px-10" />
+          <Image
+            src="/wpcs/wpcs.png"
+            alt="WPCS Belt"
+            width={500}
+            height={500}
+            layout="responsive"
+            className="responsive-image"
+          />
+        </div>
         <p className="text-balance text-center">
           The <em className="text-primary">WPCS</em> is a challenge for the Wil
           Power Championship belt. Every 3 to 4 months, the championship belt is
@@ -72,13 +82,13 @@ export default function WPCS() {
           and awarded to the winner of the current challenge, and so begins
           their reign as Wil Power Champion.
         </p>
-        <Image
+        {/* <Image
           className="mt-5 self-center"
           src="/wpcs/wpcs.webp"
           alt="WPCS Belt"
           width={500}
           height={500}
-        />
+        /> */}
         <PhotoCarousel />
       </div>
     </section>
