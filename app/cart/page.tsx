@@ -63,14 +63,14 @@ const ShowItems = () => {
   )
 }
 
-const SubmitPayment = () => (
+const SubmitPayment = ({ total }: { total: number }) => (
   <PaymentForm
     applicationId={process.env.NEXT_PUBLIC_SQUARE_APPID ?? ""}
     locationId={process.env.NEXT_PUBLIC_SQUARE_LOCATIONID ?? ""}
     cardTokenizeResponseReceived={async (token) => {
       const result = await fetch("/api/store/checkout", {
         method: "POST",
-        body: JSON.stringify({ token: token.token }),
+        body: JSON.stringify({ token: token.token, total }),
         headers: { "Content-Type": "application/json" },
       })
       console.log(result)
@@ -78,6 +78,33 @@ const SubmitPayment = () => (
   >
     <CreditCard />
   </PaymentForm>
+)
+
+const CartStats = ({
+  subtotal,
+  shipping,
+  total,
+}: {
+  subtotal: string
+  shipping: string
+  total: string
+}) => (
+  <div className="flex flex-col gap-3">
+    <Separator className="my-5" />
+    <div className="flex items-center justify-between">
+      <p className="text-muted-foreground">Subtotal</p>
+      <p className="font-medium">{subtotal}</p>
+    </div>
+    <div className="flex items-center justify-between">
+      <p className="text-muted-foreground">Shipping</p>
+      <p className="font-medium">{shipping}</p>
+    </div>
+    <Separator className="my-5" />
+    <div className="flex items-center justify-between">
+      <p className="font-semibold text-muted-foreground">Total</p>
+      <p className="text-3xl font-medium">{total}</p>
+    </div>
+  </div>
 )
 
 const CheckOut = () => {
@@ -105,21 +132,13 @@ const CheckOut = () => {
   }).format(subtotal + shipping)
 
   return (
-    <div className="flex flex-col gap-3">
-      <Separator className="my-5" />
-      <div className="flex items-center justify-between">
-        <p className="text-muted-foreground">Subtotal</p>
-        <p className="font-medium">{formattedSubtotal}</p>
-      </div>
-      <div className="flex items-center justify-between">
-        <p className="text-muted-foreground">Shipping</p>
-        <p className="font-medium">{formattedShipping}</p>
-      </div>
-      <Separator className="my-5" />
-      <div className="flex items-center justify-between">
-        <p className="font-semibold text-muted-foreground">Total</p>
-        <p className="text-3xl font-medium">{formattedTotal}</p>
-      </div>
+    <div className="flex flex-col gap-10">
+      <CartStats
+        subtotal={formattedSubtotal}
+        shipping={formattedShipping}
+        total={formattedTotal}
+      />
+      <SubmitPayment total={subtotal + shipping} />
     </div>
   )
 }
