@@ -21,7 +21,7 @@ async function submitPayment(sourceId: string, total: number) {
       sourceId,
       amountMoney: {
         currency: "USD",
-        amount: BigInt(total),
+        amount: BigInt(Math.round(100 * total)),
       },
     })
     return result
@@ -41,6 +41,8 @@ export const POST = async (req: Request) => {
     const body = schema.safeParse(await req.json())
     if (!body.success)
       return new NextResponse("Invalid Request Format", { status: 400 })
+
+    console.log(body.data)
 
     // submit the payment
     const res = await submitPayment(body.data.token, body.data.total)

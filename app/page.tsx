@@ -65,16 +65,9 @@ const Testimonials = () => {
 
   if (testimonials.length === 0)
     return (
-      <div className="mx-auto hidden w-full justify-center gap-4 md:flex md:flex-col">
+      <div className="mx-auto flex w-full flex-col justify-center gap-4">
         <h2 className="text-center text-3xl font-semibold">Testimonials</h2>
-        <Carousel
-          opts={{ align: "center", loop: true }}
-          plugins={[
-            Autoplay({
-              delay: 5000,
-            }),
-          ]}
-        >
+        <Carousel opts={{ align: "center", loop: true }}>
           <CarouselContent>
             {[1, 2, 3].map((index) => (
               <CarouselItem
@@ -90,15 +83,15 @@ const Testimonials = () => {
     )
 
   return (
-    <div className="mx-auto hidden w-full justify-center gap-4 md:flex md:flex-col">
+    <div className="mx-auto flex w-full flex-col justify-center gap-4">
       <h2 className="text-center text-3xl font-semibold">Testimonials</h2>
       <Carousel
         opts={{ align: "center", loop: true }}
-        plugins={[
-          Autoplay({
-            delay: 5000,
-          }),
-        ]}
+        // plugins={[
+        //   Autoplay({
+        //     delay: 5000,
+        //   }),
+        // ]}
       >
         <CarouselContent>
           {testimonials.map((testimonial) => (
@@ -108,10 +101,7 @@ const Testimonials = () => {
             >
               <Card className="flex size-full flex-col justify-between object-contain">
                 <CardHeader />
-                <CardContent
-                  className="flex items-center justify-center text-balance 
-              text-center text-lg italic xl:text-xl"
-                >
+                <CardContent className="flex items-center justify-center overflow-scroll text-clip text-balance text-center text-lg italic xl:text-xl">
                   {testimonial.quote}
                 </CardContent>
                 <CardFooter className="flex justify-center text-center text-xs uppercase">
