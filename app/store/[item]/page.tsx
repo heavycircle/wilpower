@@ -2,10 +2,12 @@
 
 import React from "react"
 import Image from "next/image"
+import { AlertCircle } from "lucide-react"
 import { useMediaQuery } from "react-responsive"
 import Balancer from "react-wrap-balancer"
 
-import type { Item, Quantity } from "@/types/Item"
+import type { Item } from "@/types/Item"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import {
   Carousel,
@@ -15,6 +17,7 @@ import {
   CarouselPrevious,
 } from "@/components/ui/carousel"
 import { Separator } from "@/components/ui/separator"
+import { useCart } from "@/components/cart-provider"
 import Loading from "@/app/loading"
 
 const Title = ({ name }: { name: string }) => (
@@ -79,11 +82,50 @@ const ItemVisual = ({ item }: { item: Item }) => {
 
 const sizes = ["XS", "S", "M", "L", "XL", "2XL"]
 
-const PurchaseForm = ({ quantity }: { quantity: Quantity }) => {
+const PurchaseForm = ({ item }: { item: Item }) => {
   const [size, setSize] = React.useState<string>()
+  const [error, setError] = React.useState<string>()
+  const [success, setSuccess] = React.useState<string>()
+  const { addToCart } = useCart()
+
+  const submit = () => {
+    if (size) {
+      addToCart({
+        name: item.name,
+        quantity: 1,
+        size: size,
+        price: item.price,
+      })
+      setSuccess("Item added to cart!")
+      setTimeout(() => setSuccess(""), 3000)
+    } else {
+      setError("Please select a size!")
+      setTimeout(() => setError(""), 3000)
+    }
+  }
 
   return (
     <div className="flex w-full flex-col gap-10">
+      {error && (
+        <Alert
+          variant="destructive"
+          className="absolute left-1/2 top-20 z-20 mx-auto w-1/2 -translate-x-1/2 bg-destructive/60 text-foreground transition-all ease-out"
+        >
+          <AlertCircle className="size-4" color="hsl(var(--foreground))" />
+          <AlertTitle>Error</AlertTitle>
+          <AlertDescription>{error}</AlertDescription>
+        </Alert>
+      )}
+      {success && (
+        <Alert
+          variant="success"
+          className="absolute left-1/2 top-20 z-20 mx-auto w-1/2 -translate-x-1/2 bg-success/60 text-foreground transition-all ease-out"
+        >
+          <AlertCircle className="size-4" color="hsl(var(--foreground))" />
+          <AlertTitle>Success</AlertTitle>
+          <AlertDescription>{success}</AlertDescription>
+        </Alert>
+      )}
       <div className="flex flex-col items-center justify-around gap-4 md:flex-row xl:flex-col xl:items-start">
         <h2 className="text-xl">Size:</h2>
         <div className="flex w-full justify-between md:justify-center md:gap-8 xl:gap-4">
@@ -99,7 +141,9 @@ const PurchaseForm = ({ quantity }: { quantity: Quantity }) => {
           ))}
         </div>
       </div>
-      <Button className="mx-auto w-3/4">Add to Cart</Button>
+      <Button className="mx-auto w-3/4" onClick={submit}>
+        Add to Cart
+      </Button>
     </div>
   )
 }
@@ -124,7 +168,7 @@ const ItemSpecs = ({ item }: { item: Item }) => {
         {"$" + item.price}
       </h3>
       <Separator />
-      <PurchaseForm quantity={item.quantity} />
+      <PurchaseForm item={item} />
       <ItemDescription item={item} />
     </div>
   )

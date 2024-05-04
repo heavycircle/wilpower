@@ -8,6 +8,7 @@ import { fontSans } from "@/lib/fonts"
 import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import NextAuthProvider from "@/components/auth-provider"
+import { CartProvider } from "@/components/cart-provider"
 import { SiteFooter } from "@/components/site-footer"
 import { SiteHeader } from "@/components/site-header"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
@@ -46,13 +47,15 @@ export default function RootLayout({ children }: Readonly<RootLayoutProps>) {
       >
         <NextAuthProvider>
           <ThemeProvider attribute="class" defaultTheme="light" enableSystem>
-            <div className="relative flex min-h-screen flex-col">
-              <SiteHeader />
-              <div className="flex-1 text-lg">{children}</div>
-              <SiteFooter />
-              <Toaster />
-            </div>
-            <TailwindIndicator />
+            <CartProvider>
+              <div className="relative flex min-h-screen flex-col">
+                <SiteHeader />
+                <div className="flex-1 text-lg">{children}</div>
+                <SiteFooter />
+                <Toaster />
+              </div>
+              <TailwindIndicator />
+            </CartProvider>
           </ThemeProvider>
         </NextAuthProvider>
         <SpeedInsights />

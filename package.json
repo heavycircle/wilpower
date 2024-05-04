@@ -40,6 +40,7 @@
     "react-square-web-payments-sdk": "^3.2.1",
     "react-wrap-balancer": "^1.1.0",
     "sharp": "^0.33.2",
+    "square": "^36.0.0",
     "tailwind-merge": "^1.13.2",
     "tailwindcss-animate": "^1.0.6",
     "zod": "^3.22.4"
