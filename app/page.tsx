@@ -41,7 +41,7 @@ const Images = () => (
       width={300}
       height={300}
       alt="Portrait"
-      className="order-2 md:order-none"
+      className="order-2 rounded-xl md:order-none"
     />
     <div className="order-1 flex items-center justify-center md:order-none md:flex-col">
       <Icons.Logo className="w-1/4 md:w-2/3" />

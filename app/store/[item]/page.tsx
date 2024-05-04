@@ -2,51 +2,77 @@
 
 import React from "react"
 import Image from "next/image"
+import { useMediaQuery } from "react-responsive"
 import Balancer from "react-wrap-balancer"
 
 import type { Item, Quantity } from "@/types/Item"
 import { Button } from "@/components/ui/button"
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
 import { Separator } from "@/components/ui/separator"
-import { Skeleton } from "@/components/ui/skeleton"
 import Loading from "@/app/loading"
 
 const Title = ({ name }: { name: string }) => (
-  <h1 className="text-3xl font-bold leading-tight sm:text-4xl md:text-5xl">
+  <h1 className="text-4xl font-bold md:text-5xl">
     <Balancer>{name}</Balancer>
   </h1>
 )
 
 const ItemVisual = ({ item }: { item: Item }) => {
   const [selected, setSelected] = React.useState<number>(0)
+  const mobile = useMediaQuery({ maxWidth: 750 })
+  const hidePrimary = useMediaQuery({ maxWidth: 1200 })
 
   return (
     <div className="col-span-2 flex flex-col items-center gap-10">
-      <Image
-        src={item.images[selected].url}
-        alt={item.images[selected].description}
-        width={600}
-        height={600}
-      />
-      <div className="flex gap-8">
-        {item.images.map((img, idx) => (
-          <Image
-            key={img.description}
-            src={img.url}
-            alt={img.description}
-            width={300}
-            height={300}
-            onClick={() => setSelected(idx)}
-            className="rounded-xl shadow-lg hover:scale-105 hover:cursor-pointer hover:border hover:border-primary"
-          />
-        ))}
-      </div>
+      {!hidePrimary && (
+        <Image
+          src={item.images[selected].url}
+          alt={item.images[selected].description}
+          width={600}
+          height={600}
+          className="size-[400px] rounded-xl"
+        />
+      )}
+      {mobile ? (
+        <Carousel opts={{ align: "center", loop: true }}>
+          <CarouselContent className="items-center">
+            {item.images.map((img) => (
+              <CarouselItem key={img.description} className="basis-full">
+                <Image
+                  src={img.url}
+                  alt={img.description}
+                  width={570}
+                  height={570}
+                  className="h-full rounded-xl shadow-lg"
+                  layout="responsive"
+                />
+              </CarouselItem>
+            ))}
+          </CarouselContent>
+          <CarouselPrevious />
+          <CarouselNext />
+        </Carousel>
+      ) : (
+        <div className="flex gap-8">
+          {item.images.map((img, idx) => (
+            <Image
+              key={img.description}
+              src={img.url}
+              alt={img.description}
+              width={300}
+              height={300}
+              onClick={() => setSelected(idx)}
+              className="rounded-xl shadow-lg xl:hover:scale-105 xl:hover:cursor-pointer xl:hover:border xl:hover:border-primary"
+            />
+          ))}
+        </div>
+      )}
     </div>
   )
 }
@@ -58,21 +84,22 @@ const PurchaseForm = ({ quantity }: { quantity: Quantity }) => {
 
   return (
     <div className="flex w-full flex-col gap-10">
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col items-center justify-around gap-4 md:flex-row xl:flex-col xl:items-start">
         <h2 className="text-xl">Size:</h2>
-        <div className={`grid-cols-${sizes.length} grid gap-4`}>
+        <div className="flex w-full justify-between md:justify-center md:gap-8 xl:gap-4">
           {sizes.map((s) => (
             <Button
               key={s}
               variant={size === s ? "default" : "outline"}
               onClick={() => setSize(s)}
+              className="w-10 md:w-12"
             >
               {s}
             </Button>
           ))}
         </div>
       </div>
-      <Button>Add to Cart</Button>
+      <Button className="mx-auto w-3/4">Add to Cart</Button>
     </div>
   )
 }
@@ -91,7 +118,7 @@ const ItemDescription = ({ item }: { item: Item }) => (
 
 const ItemSpecs = ({ item }: { item: Item }) => {
   return (
-    <div className="flex flex-col items-start gap-6">
+    <div className="flex w-full flex-col items-start gap-6">
       <Title name={item.name} />
       <h3 className="text-xl tracking-wider text-muted-foreground">
         {"$" + item.price}
@@ -119,10 +146,11 @@ export default function StoreItem({
   }, [params.item])
 
   if (!item) return <Loading />
+  if (loading) return <Loading />
 
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="grid grid-cols-3 gap-10">
+    <section className="mx-auto grid w-3/4 items-center gap-6 pb-8 pt-6 md:py-10">
+      <div className="flex flex-col gap-10 xl:grid xl:grid-cols-3">
         <ItemVisual item={item} />
         <ItemSpecs item={item} />
       </div>
