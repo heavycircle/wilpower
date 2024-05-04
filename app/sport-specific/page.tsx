@@ -36,7 +36,7 @@ const PhotoCarousel = () => (
             alt={`Sport ${num}`}
             height={934}
             width={934}
-            className="h-full w-auto rounded-xl"
+            className="h-full rounded-xl"
           />
         </CarouselItem>
       ))}
