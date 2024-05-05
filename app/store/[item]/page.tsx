@@ -129,14 +129,15 @@ const PurchaseForm = ({ item }: { item: Item }) => {
       <div className="flex flex-col items-center justify-around gap-4 md:flex-row xl:flex-col xl:items-start">
         <h2 className="text-xl">Size:</h2>
         <div className="flex w-full justify-between md:justify-center md:gap-8 xl:gap-4">
-          {sizes.map((s) => (
+          {Object.entries(item.quantity).map(([k, v]) => (
             <Button
-              key={s}
-              variant={size === s ? "default" : "outline"}
-              onClick={() => setSize(s)}
+              key={k}
+              variant={size === k ? "default" : "outline"}
+              onClick={() => setSize(k)}
               className="w-10 md:w-12"
+              disabled={v === 0}
             >
-              {s}
+              {k}
             </Button>
           ))}
         </div>
