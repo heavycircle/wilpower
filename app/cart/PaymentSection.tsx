@@ -22,6 +22,7 @@ const SubmitPayment = ({
   setPayment: (payment: Payment) => void
 }) => {
   const { nextStep } = useStepper()
+  const { buyerInfo } = useCart()
 
   return (
     <PaymentForm
@@ -30,7 +31,12 @@ const SubmitPayment = ({
       cardTokenizeResponseReceived={async (token) => {
         const result = await fetch("/api/store/checkout", {
           method: "POST",
-          body: JSON.stringify({ token: token.token, total, cartItems }),
+          body: JSON.stringify({
+            token: token.token,
+            total,
+            cartItems,
+            buyerInfo,
+          }),
           headers: { "Content-Type": "application/json" },
         })
         const data = await result.json()

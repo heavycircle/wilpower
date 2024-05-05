@@ -18,6 +18,7 @@ interface Description {
 }
 
 export interface Item {
+  _id: string
   name: string
   inv: string
   price: number

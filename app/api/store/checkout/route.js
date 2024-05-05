@@ -5,6 +5,8 @@ import { NextResponse } from "next/server"
 import { ApiError, Client, Environment } from "square"
 import { z } from "zod"
 
+import clientPromise from "@/lib/mongodb"
+
 BigInt.prototype.toJSON = function () {
   return this.toString()
 }
@@ -39,11 +41,23 @@ export const POST = async (req) => {
       size: z.string(),
       price: z.number(),
     })
+    const buyerSchema = z.object({
+      email: z.string().email(),
+      firstName: z.string().min(2),
+      lastName: z.string().min(2),
+      addressFirst: z.string().min(3),
+      addressSecond: z.string().optional(),
+      city: z.string().min(2),
+      state: z.string().min(2),
+      zip: z.string().length(5),
+      phone: z.string().length(12),
+    })
     // validate request body
     const schema = z.object({
       token: z.string(),
       total: z.number(),
       cartItems: z.array(cartSchema).min(1),
+      buyerInfo: buyerSchema,
     })
     const body = schema.safeParse(await req.json())
     if (!body.success)
@@ -60,6 +74,21 @@ export const POST = async (req) => {
       )
     else if (res.errors)
       return new NextResponse(JSON.stringify(res.errors[0]), { status: 500 })
+
+    // connect to the database
+    const client = await clientPromise
+    const db = client.db("wilpower").collection("sales")
+
+    const insert = await db.insertOne({
+      payment: res.payment,
+      cart: body.data.cartItems,
+      buyerInfo: body.data.buyerInfo,
+    })
+    if (!insert.acknowledged)
+      return new NextResponse(
+        "Payment processed but not recognized. Please contact support.",
+        { status: 500 }
+      )
 
     // send happy
     return new NextResponse(JSON.stringify(res.payment), { status: 200 })
