@@ -268,28 +268,34 @@ const TableItem = ({ item }: { item: Item }) => {
   return (
     <TableRow key={item.name}>
       <TableCell className="text-lg font-medium">{item.name}</TableCell>
-      <TableCell className="grid">
-        <div className="flex gap-2">
-          <p className="text-muted-foreground">Material:</p>
-          <p>{item.desc.material}</p>
-        </div>
-        <div className="flex gap-2">
-          <p className="text-muted-foreground">Fit:</p>
-          <p>{item.desc.fit}</p>
+      <TableCell>
+        <div className="grid">
+          <div className="flex gap-2">
+            <p className="text-muted-foreground">Material:</p>
+            <p>{item.desc.material}</p>
+          </div>
+          <div className="flex gap-2">
+            <p className="text-muted-foreground">Fit:</p>
+            <p>{item.desc.fit}</p>
+          </div>
         </div>
       </TableCell>
-      <TableCell className="grid grid-cols-6 items-center">
-        {Object.entries(item.quantity).map(([k, v]) => (
-          <div className="grid text-center" key={k}>
-            <p className="text-muted-foreground">{k}</p>
-            <p>{v}</p>
-          </div>
-        ))}
+      <TableCell>
+        <div className="grid grid-cols-6 items-center">
+          {Object.entries(item.quantity).map(([k, v]) => (
+            <div className="grid text-center" key={k}>
+              <p className="text-muted-foreground">{k}</p>
+              <p>{v}</p>
+            </div>
+          ))}
+        </div>
       </TableCell>
       <TableCell>{formatCurrency(item.price)}</TableCell>
-      <TableCell className="grid grid-cols-2 gap-2">
-        <EditInventoryItem item={item} />
-        <DeleteInventoryItem item={item} />
+      <TableCell>
+        <div className="grid grid-cols-2 gap-2">
+          <EditInventoryItem item={item} />
+          <DeleteInventoryItem item={item} />
+        </div>
       </TableCell>
     </TableRow>
   )
@@ -500,6 +506,7 @@ export const Inventory = () => {
           <TableRow>
             <TableHead className="w-[200px]">Item</TableHead>
             <TableHead>Description</TableHead>
+            <TableHead>Inventory</TableHead>
             <TableHead className="w-[200px]">Price</TableHead>
             <TableHead className="w-[200px] text-center">Actions</TableHead>
           </TableRow>
