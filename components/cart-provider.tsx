@@ -3,12 +3,27 @@
 import React, { ReactNode, createContext, useContext, useState } from "react"
 
 import type { CartItem } from "@/types/Cart"
+import type { Profile } from "@/types/Profile"
 
 interface CartContextType {
   cartItems: CartItem[]
+  buyerInfo: Profile
+  editProfile: (profile: Profile) => void
   addToCart: (item: CartItem) => void
   editItemQuantity: (name: string, size: string, inc: number) => void
-  removeFromCart: (name: string, size: string) => void // Assume identification by name and size
+  removeFromCart: (name: string, size: string) => void
+}
+
+const defaultProfile = {
+  email: "",
+  firstName: "",
+  lastName: "",
+  addressFirst: "",
+  addressSecond: "",
+  city: "",
+  state: "",
+  zip: "",
+  phone: "",
 }
 
 const CartContext = createContext<CartContextType | undefined>(undefined)
@@ -21,6 +36,7 @@ export function CartProvider({
   children,
 }: Readonly<CartProviderProps>): JSX.Element {
   const [cartItems, setCartItems] = useState<CartItem[]>([])
+  const [buyerInfo, setBuyerInfo] = useState<Profile>(defaultProfile)
 
   const addToCart = (item: CartItem) => {
     setCartItems((currentItems) => {
@@ -40,6 +56,10 @@ export function CartProvider({
         return [...currentItems, item]
       }
     })
+  }
+
+  const editProfile = (profile: Profile) => {
+    setBuyerInfo(profile)
   }
 
   const editItemQuantity = (name: string, size: string, increment: number) => {
@@ -76,7 +96,14 @@ export function CartProvider({
 
   return (
     <CartContext.Provider
-      value={{ cartItems, addToCart, editItemQuantity, removeFromCart }}
+      value={{
+        cartItems,
+        buyerInfo,
+        editProfile,
+        addToCart,
+        editItemQuantity,
+        removeFromCart,
+      }}
     >
       {children}
     </CartContext.Provider>
