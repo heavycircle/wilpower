@@ -45,7 +45,7 @@ const Images = () => (
     />
     <div className="order-1 flex items-center justify-center md:order-none md:flex-col">
       <Icons.Logo className="w-1/4 md:w-2/3" />
-      <Icons.Weight className="w-3/4 md:w-96" />
+      <Icons.Weight className="md:w-96" />
     </div>
   </div>
 )
@@ -65,8 +65,8 @@ const Testimonials = () => {
 
   if (testimonials.length === 0)
     return (
-      <div className="mx-auto flex w-full flex-col justify-center gap-4">
-        <h2 className="text-center text-3xl font-semibold">Testimonials</h2>
+      <div className="mx-auto flex w-11/12 flex-col justify-center gap-4">
+        {/* <h2 className="text-center text-3xl font-semibold">Testimonials</h2>
         <Carousel opts={{ align: "center", loop: true }}>
           <CarouselContent>
             {[1, 2, 3].map((index) => (
@@ -78,50 +78,46 @@ const Testimonials = () => {
               </CarouselItem>
             ))}
           </CarouselContent>
-        </Carousel>
+        </Carousel> */}
       </div>
     )
 
   return (
-    <div className="mx-auto flex w-full flex-col justify-center gap-4">
-      <h2 className="text-center text-3xl font-semibold">Testimonials</h2>
-      <Carousel
-        opts={{ align: "center", loop: true }}
-        // plugins={[
-        //   Autoplay({
-        //     delay: 5000,
-        //   }),
-        // ]}
-      >
-        <CarouselContent>
-          {testimonials.map((testimonial) => (
-            <CarouselItem
-              key={testimonial.name}
-              className="basis-full md:basis-1/2 lg:basis-1/3"
-            >
-              <Card className="flex size-full flex-col justify-between object-contain">
-                <CardHeader />
-                <CardContent className="flex items-center justify-center overflow-scroll text-clip text-balance text-center text-lg italic xl:text-xl">
-                  {testimonial.quote}
+    <section className="w-full">
+      <div className="px-4 md:px-6">
+        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+          <div className="space-y-2">
+            <div className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+              What My Clients Say
+            </div>
+            <div className="text-muted-foreground">
+              Hear from the people who have transformed their lives with my
+              personal training.
+            </div>
+          </div>
+          <div className="grid w-full gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {testimonials.map((test) => (
+              <Card className="flex flex-col justify-between space-y-4 p-6 ">
+                <div />
+                <CardContent className="text-base leading-relaxed sm:text-lg md:text-xl">
+                  {test.quote}
                 </CardContent>
-                <CardFooter className="flex justify-center text-center text-xs uppercase">
-                  {testimonial.name}
+                <CardFooter className="justify-center text-sm font-bold uppercase">
+                  {test.name}
                 </CardFooter>
               </Card>
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
-      </Carousel>
-    </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   )
 }
 
 export default function IndexPage() {
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10">
-      <div className="mx-auto flex max-w-[980px] flex-col items-center gap-2">
+    <section className="mx-auto grid w-3/4 items-center gap-6 pb-8 pt-6 text-xl md:py-10">
+      <div className="mx-auto flex flex-col items-center gap-8">
         <Title />
         <Images />
         <Testimonials />

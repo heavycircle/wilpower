@@ -56,6 +56,37 @@
   max-width: 420px;
 }
 
+.link {
+  position: relative;
+  transition: color 0.3s ease;
+  white-space: nowrap;
+  flex-shrink: 0;
+  /* width: min-content; */
+}
+.link:hover {
+  color: hsl(var(--primary));
+}
+.link:hover > * {
+  color: hsl(var(--primary));
+}
+.link::after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: hsl(var(--primary));
+  color: hsl(var(--primary));
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  transform: scaleX(0);
+  transform-origin: 100%;
+  transition: transform 0.3s ease;
+}
+.link:hover::after {
+  transform: scaleX(1);
+  transform-origin: 0%;
+}
+
 @layer base {
   * {
     @apply border-border;

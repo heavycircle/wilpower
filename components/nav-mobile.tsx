@@ -41,7 +41,10 @@ export const MobileHeader = () => {
         <SheetHeader className="my-4">
           <SheetTitle>
             <SheetClose asChild>
-              <Link href="/" className="flex items-center justify-center gap-4">
+              <Link
+                href="/"
+                className="flex items-center justify-center gap-4 transition-all hover:text-primary"
+              >
                 <Icons.Logo className="size-8" />
                 <span className="inline-block font-bold">
                   <Balancer>{siteConfig.name}</Balancer>
@@ -59,7 +62,7 @@ export const MobileHeader = () => {
                         <Button
                           onClick={() => router.push(item.href ?? "/")}
                           rel="noreferrer"
-                          className="w-full"
+                          className="link w-full hover:bg-inherit hover:text-primary"
                           variant={"ghost"}
                         >
                           {item.title}

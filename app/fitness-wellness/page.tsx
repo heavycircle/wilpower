@@ -1,6 +1,7 @@
 "use client"
 
 import Image from "next/image"
+import Link from "next/link"
 import Autoplay from "embla-carousel-autoplay"
 import Balancer from "react-wrap-balancer"
 
@@ -113,9 +114,11 @@ const LongText = () => (
         also available to train school teams at their facilities or at local
         athletic fields and tracks.
       </p>
-      <p className="text-center text-xl font-medium italic">
-        Contact now for a free consultation!
-      </p>
+      <Link href="/contact" className="flex justify-center">
+        <p className="link w-min text-center text-xl font-medium italic">
+          Contact now for a free consultation!
+        </p>
+      </Link>
     </div>
   </div>
 )
