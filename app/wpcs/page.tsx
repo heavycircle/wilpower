@@ -2,6 +2,7 @@
 
 import Image from "next/image"
 import Autoplay from "embla-carousel-autoplay"
+import { motion } from "framer-motion"
 import Balancer from "react-wrap-balancer"
 
 import {
@@ -21,6 +22,7 @@ const PhotoCarousel = () => (
         delay: 5000,
       }),
     ]}
+    className="mx-auto w-3/4"
   >
     <CarouselContent className="items-center">
       {Array.from(Array(6).keys(), (key) => key + 1).map((num) => (
@@ -28,13 +30,30 @@ const PhotoCarousel = () => (
           key={num}
           className="basis-full md:basis-1/2 lg:basis-1/3"
         >
-          <Image
-            src={`/wpcs-carousel/wpcs-${num}.jpg`}
-            alt={`Sport ${num}`}
-            height={934}
-            width={934}
-            className="h-full rounded-xl"
-          />
+          <motion.div
+            variants={{
+              initial: { y: -100, opacity: 0 },
+              animate: (idx: number) => ({
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.05 * idx,
+                },
+              }),
+            }}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            custom={num}
+          >
+            <Image
+              src={`/wpcs-carousel/wpcs-${num}.jpg`}
+              alt={`Sport ${num}`}
+              height={934}
+              width={934}
+              className="h-full rounded-xl"
+            />
+          </motion.div>
         </CarouselItem>
       ))}
     </CarouselContent>
@@ -45,7 +64,7 @@ const PhotoCarousel = () => (
 
 export default function WPCS() {
   return (
-    <section className="mx-auto grid w-3/4 items-center gap-6 pb-8 pt-6 text-xl md:py-10">
+    <section className="mx-auto grid w-11/12 items-center gap-6 pb-8 pt-6 text-xl md:w-3/4 md:py-10">
       <div className="mx-auto flex flex-col items-center gap-8">
         <div className="items-center justify-center self-center text-center">
           <h1 className="self-center text-4xl font-bold leading-tight md:text-5xl lg:text-6xl">
@@ -57,15 +76,37 @@ export default function WPCS() {
           </h1>
         </div>
         <div className="flex w-full flex-col items-center justify-between sm:w-11/12 md:w-3/4 md:flex-row lg:w-2/3">
-          <Icons.Weight className="px-10" />
-          <Image
-            src="/wpcs/wpcs.png"
-            alt="WPCS Belt"
-            width={500}
-            height={500}
-            layout="responsive"
-            className="responsive-image"
-          />
+          <motion.div
+            variants={{
+              initial: { x: -100, opacity: 0 },
+              animate: { opacity: 1, x: 0 },
+            }}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="px-10"
+          >
+            <Icons.Weight className="h-auto w-full min-w-72" />
+          </motion.div>
+          <motion.div
+            variants={{
+              initial: { x: 100, opacity: 0 },
+              animate: { opacity: 1, x: 0 },
+            }}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="px-10"
+          >
+            <Image
+              src="/wpcs/wpcs.png"
+              alt="WPCS Belt"
+              width={500}
+              height={500}
+              layout="responsive"
+              className="responsive-image"
+            />
+          </motion.div>
         </div>
         <p className="text-balance text-center">
           The <em className="text-primary">WPCS</em> is a challenge for the Wil
@@ -82,13 +123,6 @@ export default function WPCS() {
           and awarded to the winner of the current challenge, and so begins
           their reign as Wil Power Champion.
         </p>
-        {/* <Image
-          className="mt-5 self-center"
-          src="/wpcs/wpcs.webp"
-          alt="WPCS Belt"
-          width={500}
-          height={500}
-        /> */}
         <PhotoCarousel />
       </div>
     </section>

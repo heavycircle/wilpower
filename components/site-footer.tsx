@@ -60,14 +60,14 @@ export function SiteFooter() {
               <Button
                 variant={"outline"}
                 onClick={() => router.push("/admin")}
-                className="mt-1 text-xs"
+                className="mt-1 text-xs hover:text-primary"
               >
                 Admin Console
               </Button>
               <Button
                 variant={"outline"}
                 onClick={() => signOut()}
-                className="mt-1 text-xs"
+                className="mt-1 text-xs hover:text-primary"
               >
                 Sign Out
               </Button>
@@ -77,7 +77,7 @@ export function SiteFooter() {
           <Button
             variant="link"
             onClick={() => signIn("google")}
-            className="m-0 h-fit p-0 text-sm font-light text-foreground"
+            className="m-0 h-fit p-0 text-sm font-light text-foreground hover:text-primary"
           >
             Not logged in.
           </Button>

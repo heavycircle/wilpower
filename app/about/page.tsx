@@ -1,8 +1,56 @@
 "use client"
 
+import { ReactNode, useRef } from "react"
+import { motion, useInView } from "framer-motion"
 import Balancer from "react-wrap-balancer"
 
 import { Icons } from "@/components/icons"
+
+function EnterLeft({
+  className,
+  children,
+}: {
+  className?: string
+  children: ReactNode
+}) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+
+  const motionProps = {
+    initial: { x: -400, opacity: 0 },
+    animate: isInView ? { x: 0, opacity: 1 } : {},
+    transition: { type: "spring", stiffness: 100, damping: 10 },
+  }
+
+  return (
+    <section ref={ref} className={className}>
+      <motion.div {...motionProps}>{children}</motion.div>
+    </section>
+  )
+}
+
+function EnterRight({
+  className,
+  children,
+}: {
+  className?: string
+  children: ReactNode
+}) {
+  const ref = useRef(null)
+  const isInView = useInView(ref, { once: true })
+
+  const motionProps = {
+    initial: { x: 400, opacity: 0 },
+    animate: isInView ? { x: 0, opacity: 1 } : {},
+    transition: { type: "spring", stiffness: 100, damping: 10 },
+  }
+
+  return (
+    <section ref={ref} className={className}>
+      <motion.div {...motionProps}>{children}</motion.div>
+    </section>
+  )
+}
 
 export default function About() {
   return (
@@ -20,28 +68,36 @@ export default function About() {
             ISSN
           </h3>
         </div>
+
         <div className="mx-auto flex flex-col items-center justify-between self-center">
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
-            <Icons.MS className="h-44 w-auto flex-none object-contain" />
-            <p className="flex-1 text-center sm:text-right">
+            <EnterLeft className="flex-none object-contain">
+              <Icons.MS className="h-44 w-auto" />
+            </EnterLeft>
+            <EnterRight className="flex-1 text-center sm:text-right">
               <em className="text-balance text-primary">
                 Masters of Sport and Human Movement Degree
               </em>{" "}
               from Cumberland University.
-            </p>
+            </EnterRight>
           </span>
+
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
-            <Icons.BS className="order-1 h-44 w-auto flex-none object-contain" />
-            <p className="order-2 flex-1 text-center sm:order-none sm:text-left">
+            <EnterRight className="order-1 flex-none object-contain">
+              <Icons.BS className="h-44 w-auto" />
+            </EnterRight>
+            <EnterLeft className="order-2 flex-1 text-center sm:order-none sm:text-left">
               <em className="text-balance text-primary">
                 Bachelor of Science Degree in Exercise Science
               </em>{" "}
               from the University of Rhode Island.
-            </p>
+            </EnterLeft>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
-            <Icons.RSCC className="h-44 w-auto flex-none object-contain" />
-            <p className="flex-1 text-center sm:text-right">
+            <EnterLeft className="flex-none object-contain">
+              <Icons.RSCC className="h-44 w-auto" />
+            </EnterLeft>
+            <EnterRight className="flex-1 text-center sm:text-right">
               <em className="text-balance text-primary">
                 Registered Strength and Conditioning Coach
               </em>{" "}
@@ -49,11 +105,13 @@ export default function About() {
               Certified to apply advanced knowledge to assess, motivate,
               educate, and train athletes for the primary goal of improving
               sport performance.
-            </p>
+            </EnterRight>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
-            <Icons.CSCS className="order-1 h-44 w-auto flex-none object-contain" />
-            <p className="order-2 flex-1 text-center sm:order-none sm:text-left">
+            <EnterRight className="order-1 flex-none object-contain">
+              <Icons.CSCS className="h-44 w-auto" />
+            </EnterRight>
+            <EnterLeft className="order-2 flex-1 text-center sm:order-none sm:text-left">
               <em className="text-balance text-primary">
                 Certified Strength and Conditioning Specialist (CSCS)
               </em>{" "}
@@ -61,11 +119,13 @@ export default function About() {
               Certified to apply scientific knowledge to help improve athletic
               performance for athletes and health/fitness levels for those
               wanting to reach the peak of living a long, healthy life.
-            </p>
+            </EnterLeft>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
-            <Icons.CSPS className="size-44" />
-            <p className="flex-1 text-center sm:text-right">
+            <EnterLeft className="flex-none object-contain">
+              <Icons.CSPS className="h-44 w-auto" />
+            </EnterLeft>
+            <EnterRight className="flex-1 text-center sm:text-right">
               <em className="text-balance text-primary">
                 Certified for Special Populations Specialist
               </em>{" "}
@@ -74,11 +134,13 @@ export default function About() {
               population clients of all ages regarding their health and fitness
               needs, those of whom have chronic and temporary health conditions
               (ex. heart disease, joint replacement, diabetes).
-            </p>
+            </EnterRight>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
-            <Icons.ACSM className="order-1 h-44 w-auto flex-none object-contain" />
-            <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
+            <EnterRight className="order-1 flex-none object-contain">
+              <Icons.ACSM className="h-44 w-auto" />
+            </EnterRight>
+            <EnterLeft className="order-1 flex-1 text-center sm:order-none sm:text-left">
               <em className="text-balance text-primary">
                 Certified Exercise Physiologist
               </em>{" "}
@@ -88,11 +150,13 @@ export default function About() {
               interpreting physical assessments, and developing exercise
               prescriptions for those who are healthy or have medically
               controlled diseases.
-            </p>
+            </EnterLeft>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
-            <Icons.USAW className="h-44 w-auto flex-none object-contain" />
-            <p className="flex-1 text-center sm:text-right">
+            <EnterLeft className="flex-none object-contain">
+              <Icons.USAW className="h-44 w-auto" />
+            </EnterLeft>
+            <EnterRight className="flex-1 text-center sm:text-right">
               <em className="text-balance text-primary">
                 Certified USA Weightlifting Level 2 for Olympic and Functional
                 Training
@@ -100,11 +164,13 @@ export default function About() {
               . Expert level of teaching and coaching for all Olympic lifts.
               Expert in teaching functional lifts and exercises for physical
               health and wellness.
-            </p>
+            </EnterRight>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
-            <Icons.USATF className="order-1 h-44 w-auto flex-none object-contain" />
-            <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
+            <EnterRight className="order-1 flex-none object-contain">
+              <Icons.USATF className=" h-44 w-auto" />
+            </EnterRight>
+            <EnterLeft className="order-1 flex-1 text-center sm:order-none sm:text-left">
               <em className="text-balance text-primary">
                 Certified USA Track and Field Coach Level 1 for field and track
                 events
@@ -112,28 +178,32 @@ export default function About() {
               . Expert in teaching and coaching sprint and speed training
               techniques for short, middle, and long-distance running events and
               NFL combine training.
-            </p>
+            </EnterLeft>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
-            <Icons.USAPL className="h-44 w-auto flex-none object-contain" />
-            <p className="flex-1 text-center sm:text-right">
+            <EnterLeft>
+              <Icons.USAPL className="h-44 w-auto flex-none object-contain" />
+            </EnterLeft>
+            <EnterRight className="flex-1 text-center sm:text-right">
               <em className="text-balance text-primary">
                 Certified USA Powerlifting Senior Coach
               </em>
               . Expert in teaching fundamentals, progression, variations, and
               techniques for the squat, bench press, and deadlift.
-            </p>
+            </EnterRight>
           </span>
           <span className="my-8 flex w-full flex-col items-center justify-between gap-8 sm:max-h-44 sm:flex-row">
-            <Icons.ISSN className="order-1 h-44 w-auto flex-none object-contain" />
-            <p className="order-1 flex-1 text-center sm:order-none sm:text-left">
+            <EnterRight className="order-1 flex-none object-contain">
+              <Icons.ISSN className="h-44 w-auto" />
+            </EnterRight>
+            <EnterLeft className="order-1 flex-1 text-center sm:order-none sm:text-left">
               <em className="text-balance text-primary">
                 Certified Sports Nutritionist
               </em>{" "}
               with the working knowledge to take your fitness level or sports
               career to the next level. Personalized Nutrition guides are
               available to all clients.
-            </p>
+            </EnterLeft>
           </span>
         </div>
       </div>

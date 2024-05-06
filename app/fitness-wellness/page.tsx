@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import Autoplay from "embla-carousel-autoplay"
+import { motion } from "framer-motion"
 import Balancer from "react-wrap-balancer"
 
 import {
@@ -22,6 +23,7 @@ const PhotoCarousel = () => (
         delay: 5000,
       }),
     ]}
+    className="mx-auto w-3/4"
   >
     <CarouselContent className="items-center">
       {Array.from(Array(11).keys(), (key) => key + 1).map((num) => (
@@ -29,13 +31,30 @@ const PhotoCarousel = () => (
           key={num}
           className="basis-full md:basis-1/2 lg:basis-1/3"
         >
-          <Image
-            src={`/fitness-carousel/fitness-${num}.jpg`}
-            alt={`Sport ${num}`}
-            height={934}
-            width={934}
-            className="h-full rounded-xl"
-          />
+          <motion.div
+            variants={{
+              initial: { y: -100, opacity: 0 },
+              animate: (idx: number) => ({
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.05 * idx,
+                },
+              }),
+            }}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            custom={num}
+          >
+            <Image
+              src={`/fitness-carousel/fitness-${num}.jpg`}
+              alt={`Sport ${num}`}
+              height={934}
+              width={934}
+              className="h-full rounded-xl"
+            />
+          </motion.div>
         </CarouselItem>
       ))}
     </CarouselContent>
@@ -125,7 +144,7 @@ const LongText = () => (
 
 export default function FitnessWellness() {
   return (
-    <section className="mx-auto grid w-3/4 items-center gap-6 pb-8 pt-6 text-xl md:py-10">
+    <section className="mx-auto grid w-11/12 items-center gap-6 pb-8 pt-6 text-xl md:w-3/4 md:py-10">
       <div className="mx-auto flex flex-col items-center gap-8">
         <Title />
         <LongText />

@@ -3,10 +3,9 @@
 import Image from "next/image"
 import Link from "next/link"
 import Autoplay from "embla-carousel-autoplay"
-import { CheckCircle } from "lucide-react"
+import { motion } from "framer-motion"
 import Balancer from "react-wrap-balancer"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Carousel,
   CarouselContent,
@@ -14,7 +13,6 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
-import { Separator } from "@/components/ui/separator"
 import { Icons } from "@/components/icons"
 
 const PhotoCarousel = () => (
@@ -25,20 +23,38 @@ const PhotoCarousel = () => (
         delay: 5000,
       }),
     ]}
+    className="mx-auto w-3/4"
   >
-    <CarouselContent className="items-center">
+    <CarouselContent>
       {Array.from(Array(11).keys(), (key) => key + 1).map((num) => (
         <CarouselItem
           key={num}
           className="basis-full md:basis-1/2 lg:basis-1/3"
         >
-          <Image
-            src={`/sport-carousel/sport-${num}.jpg`}
-            alt={`Sport ${num}`}
-            height={934}
-            width={934}
-            className="h-full rounded-xl"
-          />
+          <motion.div
+            variants={{
+              initial: { y: -100, opacity: 0 },
+              animate: (idx: number) => ({
+                opacity: 1,
+                y: 0,
+                transition: {
+                  delay: 0.05 * idx,
+                },
+              }),
+            }}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            custom={num}
+          >
+            <Image
+              src={`/sport-carousel/sport-${num}.jpg`}
+              alt={`Sport ${num}`}
+              height={934}
+              width={934}
+              className="h-full rounded-xl"
+            />
+          </motion.div>
         </CarouselItem>
       ))}
     </CarouselContent>
@@ -101,22 +117,42 @@ const LongText = () => (
           </li>
         </ul>
       </div>
-      <Image
-        src="/sport-carousel/main-1.jpg"
-        alt="Speed and Agility"
-        height={1022}
-        width={877}
-        className="rounded-xl"
-      />
+      <motion.div
+        variants={{
+          initial: { x: 100, opacity: 0 },
+          animate: { x: 0, opacity: 1, transition: { duration: 0.8 } },
+        }}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+      >
+        <Image
+          src="/sport-carousel/main-1.jpg"
+          alt="Speed and Agility"
+          height={500}
+          width={500}
+          className="mx-auto rounded-xl"
+        />
+      </motion.div>
     </div>
     <div className="grid items-center gap-8 md:grid-cols-2">
-      <Image
-        src="/sport-carousel/main-2.jpg"
-        alt="Power Training"
-        height={934}
-        width={934}
-        className="order-1 rounded-xl"
-      />
+      <motion.div
+        variants={{
+          initial: { x: -100, opacity: 0 },
+          animate: { x: 0, opacity: 1, transition: { duration: 0.8 } },
+        }}
+        initial="initial"
+        whileInView="animate"
+        viewport={{ once: true }}
+      >
+        <Image
+          src="/sport-carousel/main-2.jpg"
+          alt="Power Training"
+          height={500}
+          width={500}
+          className="order-1 mx-auto rounded-xl"
+        />
+      </motion.div>
       <div className="order-none flex flex-col gap-4 md:order-2">
         <h3 className="text-balance text-center text-3xl font-semibold text-primary">
           Weight, Power, and Plyometric Training
@@ -161,194 +197,12 @@ const LongText = () => (
   </div>
 )
 
-const Cards = () => (
-  <div className="flex flex-col gap-4 sm:grid sm:grid-cols-2">
-    <div className="flex flex-col items-center justify-center gap-4">
-      <Card>
-        <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-semibold">
-            <Balancer>Speed and Agility Training</Balancer>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="grid gap-4 pt-0">
-          <div className="mt-2 text-right">
-            <div className="grid grid-cols-5 items-center justify-center">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                Assessment of current flexibility level, running technique,
-                stride length and power
-              </p>
-            </div>
-            <Separator className="my-2" />
-            <div className="grid grid-cols-5">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                Individual-video study of speed, agility, plyometric and
-                weight-training technique{" "}
-              </p>
-            </div>
-            <Separator className="my-2" />
-            <div className="grid grid-cols-5">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                Dynamic warm-up movement, emphasizing increased flexibility and
-                speed/agility enhancement{" "}
-              </p>
-            </div>
-            <Separator className="my-2" />
-            <div className="grid grid-cols-5">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                Field work including- form running progression, proper foot
-                strike, knee drive and arm action
-              </p>
-            </div>
-            <Separator className="my-2" />
-            <div className="grid grid-cols-5">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                Agility training, including- change of direction and reaction
-                time drills specific to demands of each sport
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-semibold">
-            <Balancer>Nutrition</Balancer>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="grid gap-4 pt-0">
-          <div className="mt-2 text-right">
-            <div className="grid grid-cols-5 items-center justify-center">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                Individualized nutrition program designed to meet each athletes
-                specific needs
-              </p>
-            </div>
-            <Separator className="my-2" />
-            <div className="grid grid-cols-5">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                Nutritional supplements recommended to enhance performance and
-                recovery
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-    <div className="flex flex-col items-center justify-center gap-4">
-      <Card>
-        <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-semibold">
-            <Balancer>Weight, Power, & Plyometric Training</Balancer>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="grid gap-4 pt-0">
-          <div className="mt-2 text-right">
-            <div className="grid grid-cols-5 items-center justify-center">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                Assessment of current strength level, identification of
-                weaknesses in core, lower body and upper body strength
-              </p>
-            </div>
-            <Separator className="my-2" />
-            <div className="grid grid-cols-5">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                Proper form, technique and progression taught in explosive lifts
-                and plyometric exercises (jump training)
-              </p>
-            </div>
-            <Separator className="my-2" />
-            <div className="grid grid-cols-5">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                Foam rolling technique and proper warm-up and cool-down
-                implemented in each athletes work-out program
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-      <Card>
-        <CardHeader className="text-center">
-          <CardTitle className="text-3xl font-semibold">
-            <Balancer>Training Location</Balancer>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="grid gap-4 pt-0">
-          <div className="mt-2 text-right">
-            <div className="grid grid-cols-5 items-center justify-center">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                Training sessions are held at the athlete&apos;s home, school,
-                or designated training facility
-              </p>
-            </div>
-            <Separator className="my-2" />
-            <div className="grid grid-cols-5">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                I utilize facilities in and around the Nashville area and can
-                train at a facility that best suits your schedule and type of
-                training
-              </p>
-            </div>
-            <Separator className="my-2" />
-            <div className="grid grid-cols-5">
-              <div className="flex items-center">
-                <CheckCircle className="size-7" color={"#facc15"} />
-              </div>
-              <p className="col-span-4">
-                I&apos;m also available to train school teams at their
-                facilities or at local athletic fields and tracks
-              </p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-  </div>
-)
-
 export default function SportTraining() {
   return (
-    <section className="mx-auto grid w-3/4 items-center gap-6 pb-8 pt-6 text-xl md:py-10">
+    <section className="mx-auto grid w-11/12 items-center gap-6 pb-8 pt-6 text-xl md:w-3/4 md:py-10">
       <div className="mx-auto flex flex-col items-center gap-8">
         <Title />
         <LongText />
-        {/* <Cards /> */}
       </div>
     </section>
   )

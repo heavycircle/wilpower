@@ -3,6 +3,7 @@
 import React from "react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
+import { motion } from "framer-motion"
 import Balancer from "react-wrap-balancer"
 
 import type { Item } from "@/types/Item"
@@ -21,11 +22,30 @@ const Title = () => (
   </h1>
 )
 
-const StoreItem = ({ item }: { item: Item }) => {
+const StoreItem = ({ item, idx }: { item: Item; idx: number }) => {
   const router = useRouter()
   return (
-    <Card
-      className="flex flex-col justify-between transition-all duration-500 hover:scale-105 hover:cursor-pointer hover:text-primary"
+    <motion.div
+      variants={{
+        initial: { y: -100, opacity: 0 },
+        animate: {
+          opacity: 1,
+          y: 0,
+          transition: {
+            type: "spring",
+            delay: 0.05 * idx,
+          },
+        },
+        whileHover: {
+          scale: 1.05,
+          transition: { duration: 0.1 },
+        },
+      }}
+      initial="initial"
+      whileInView="animate"
+      whileHover="whileHover"
+      viewport={{ once: true }}
+      className="flex flex-col justify-between rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-500 hover:cursor-pointer hover:text-primary"
       onClick={() => router.push(`/store/${item.inv}`)}
     >
       <CardHeader className="m-0 p-0 pb-4">
@@ -41,7 +61,7 @@ const StoreItem = ({ item }: { item: Item }) => {
         <CardTitle>{item.name}</CardTitle>
         <CardDescription className="line-clamp-2">{item.price}</CardDescription>
       </CardContent>
-    </Card>
+    </motion.div>
   )
 }
 
@@ -79,8 +99,8 @@ const Store = () => {
 
   return (
     <div className="grid w-3/4 justify-center gap-16 md:grid-cols-2">
-      {store.map((item) => (
-        <StoreItem key={item.name} item={item} />
+      {store.map((item, idx) => (
+        <StoreItem key={item.name} item={item} idx={idx} />
       ))}
     </div>
   )
