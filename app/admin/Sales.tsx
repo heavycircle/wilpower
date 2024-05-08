@@ -23,7 +23,13 @@ import {
   TableRow,
 } from "@/components/ui/table"
 
-const TableItem = ({ sale }: { sale: Sale }) => {
+const TableItem = ({
+  sale,
+  setSales,
+}: {
+  sale: Sale
+  setSales: React.Dispatch<React.SetStateAction<Sale[]>>
+}) => {
   const [error, setError] = React.useState<string>()
   const [success, setSuccess] = React.useState<string>()
 
@@ -36,7 +42,18 @@ const TableItem = ({ sale }: { sale: Sale }) => {
       body: JSON.stringify({ id: sale._id, archived: !sale.archived }),
     })
     if (!res.ok) setError(await res.text())
-    else setSuccess(await res.text())
+    else {
+      setSuccess(await res.text())
+      // Update the sale in the sales list
+      setSales((sales: Sale[]) => {
+        return sales.map((s) => {
+          if (s._id === sale._id) {
+            return { ...s, archived: !s.archived }
+          }
+          return s
+        })
+      })
+    }
   }
   return (
     <>
@@ -154,7 +171,7 @@ export const Sales = () => {
           {sales
             .filter((t) => !t.archived)
             .map((t) => (
-              <TableItem key={t.payment.orderId} sale={t} />
+              <TableItem key={t.payment.orderId} sale={t} setSales={setSales} />
             ))}
         </TableBody>
       </Table>
@@ -181,7 +198,11 @@ export const Sales = () => {
                 {sales
                   .filter((t) => t.archived)
                   .map((t) => (
-                    <TableItem key={t.payment.orderId} sale={t} />
+                    <TableItem
+                      key={t.payment.orderId}
+                      sale={t}
+                      setSales={setSales}
+                    />
                   ))}
               </TableBody>
             </Table>
