@@ -45,7 +45,7 @@ const StoreItem = ({ item, idx }: { item: Item; idx: number }) => {
       whileInView="animate"
       whileHover="whileHover"
       viewport={{ once: true }}
-      className="flex flex-col justify-between rounded-lg border bg-card text-card-foreground shadow-sm transition-all duration-500 hover:cursor-pointer hover:text-primary"
+      className="flex flex-col justify-between rounded-lg border bg-card text-card-foreground shadow-sm duration-500 hover:cursor-pointer hover:text-primary"
       onClick={() => router.push(`/store/${item.inv}`)}
     >
       <CardHeader className="m-0 p-0 pb-4">
