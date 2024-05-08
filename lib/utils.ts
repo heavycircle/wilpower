@@ -13,7 +13,18 @@ export async function computeCart(cartItems: CartItem[], buyerInfo: Profile) {
     (total, item) => total + item.quantity * item.price,
     0
   )
-  const shipping = 5
+
+  let shipping = 0,
+    processing = 0
+  const dbRes = await fetch("/api/sales/fees")
+  if (!dbRes.ok) {
+    console.log("Error fetching fees")
+    return
+  } else {
+    const data = await dbRes.json()
+    shipping = data.shipping
+    processing = data.processing
+  }
 
   let tax = 0
   if (buyerInfo.zip) {
@@ -26,11 +37,14 @@ export async function computeCart(cartItems: CartItem[], buyerInfo: Profile) {
       }
     )
     const data = await res.json()
-    tax = Math.round(data[0].total_rate * (subtotal + shipping) * 100) / 100
+    tax =
+      Math.round(
+        data[0].total_rate * (subtotal + shipping + processing) * 100
+      ) / 100
   }
 
   const total = subtotal + shipping + tax
-  return { subtotal, shipping, tax, total }
+  return { subtotal, shipping, processing, tax, total }
 }
 
 export const formatCurrency = (n: number) => {

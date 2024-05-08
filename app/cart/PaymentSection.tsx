@@ -63,6 +63,7 @@ export const PaymentSection = ({
   const [total, setTotal] = React.useState<TotalTypes>({
     subtotal: 0,
     shipping: 0,
+    processing: 0,
     tax: 0,
     total: 0,
   })

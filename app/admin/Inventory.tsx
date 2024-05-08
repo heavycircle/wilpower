@@ -11,6 +11,14 @@ import { formatCurrency } from "@/lib/utils"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card"
+import {
   Dialog,
   DialogContent,
   DialogDescription,
@@ -28,6 +36,7 @@ import {
   FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
 import {
   Table,
   TableBody,
@@ -482,6 +491,115 @@ const DeleteInventoryItem = ({ item }: { item: Item }) => {
   )
 }
 
+const FeesSection = () => {
+  const [fees, setFees] = React.useState<Fees>({ shipping: 0, processing: 0 })
+  const [shipping, setShipping] = React.useState<number>()
+  const [processing, setProcessing] = React.useState<number>()
+  const [error, setError] = React.useState<string>()
+  const [success, setSuccess] = React.useState<string>()
+
+  // get the testimonials from the database
+  React.useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/api/sales/fees")
+      const data = await res.json()
+      if (res.ok) setFees(data)
+    }
+    fetchData()
+  }, [])
+
+  const submit = async () => {
+    if (!shipping || !processing) {
+      setError("Must set both shipping and processing values!")
+      return
+    }
+    const res = await fetch("/api/sales/fees", {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ shipping, processing }),
+    })
+    const data = await res.text()
+    if (!res.ok) setError(data)
+    else {
+      setSuccess(data)
+      setFees({ shipping, processing })
+    }
+  }
+
+  return (
+    <>
+      <h2 className="text-3xl font-semibold">Fees</h2>
+      <Card>
+        <CardHeader className="m-0 p-4" />
+        <CardContent className="grid items-center justify-center gap-2">
+          <div className="grid grid-cols-2 gap-8">
+            <p className="text-muted-foreground">Shipping</p>
+            <p>{formatCurrency(fees.shipping)}</p>
+          </div>
+          <div className="grid grid-cols-2 gap-8">
+            <p className="text-muted-foreground">Processing</p>
+            <p>{formatCurrency(fees.processing)}</p>
+          </div>
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button>Edit</Button>
+            </DialogTrigger>
+            <DialogContent className="space-y-4">
+              <DialogHeader>
+                <DialogTitle>Edit Shipping and Processing Fees</DialogTitle>
+                <DialogDescription>
+                  <strong>Click Submit to save changes.</strong>
+                </DialogDescription>
+              </DialogHeader>
+              {error && (
+                <Alert variant="destructive">
+                  <AlertCircle className="size-4" />
+                  <AlertDescription className="font-semibold">
+                    {error}
+                  </AlertDescription>
+                </Alert>
+              )}
+              {success && (
+                <Alert variant="success">
+                  <CheckCircle className="size-4" />
+                  <AlertDescription className="font-semibold">
+                    {success}
+                  </AlertDescription>
+                </Alert>
+              )}
+              <div className="grid grid-cols-4 items-center">
+                <Label>Shipping</Label>
+                <Input
+                  type="number"
+                  placeholder={String(fees.shipping)}
+                  onChange={(e) => setShipping(Number(e.target.value))}
+                  className="col-span-3"
+                />
+              </div>
+              <div className="grid grid-cols-4 items-center">
+                <Label>Processing</Label>
+                <Input
+                  type="number"
+                  placeholder={String(fees.processing)}
+                  onChange={(e) => setProcessing(Number(e.target.value))}
+                  className="col-span-3"
+                />
+              </div>
+              <Button onClick={submit}>Submit</Button>
+            </DialogContent>
+          </Dialog>
+        </CardContent>
+        <CardFooter className="m-0 p-0" />
+      </Card>
+    </>
+  )
+}
+
+interface Fees {
+  shipping: number
+  processing: number
+}
+
 export const Inventory = () => {
   const [inventory, setInventory] = React.useState<Item[]>([])
 
@@ -497,6 +615,7 @@ export const Inventory = () => {
 
   return (
     <div className="flex flex-col items-center gap-4">
+      <FeesSection />
       <h2 className="text-3xl font-semibold">Inventory</h2>
       <Table>
         <TableCaption>

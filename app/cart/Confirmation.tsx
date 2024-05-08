@@ -82,7 +82,10 @@ export const Confirmation = ({
         <h5 className="font-semibold">Items Ordered</h5>
         <div className="flex flex-col items-center gap-4">
           {cartItems.map((item: CartItem) => (
-            <div className="flex w-1/2 justify-between text-muted-foreground">
+            <div
+              className="flex w-1/2 justify-between text-muted-foreground"
+              key={item.name}
+            >
               <div className="grid">
                 <p>{item.name}</p>
                 <p className="font-extralight">{item.size}</p>

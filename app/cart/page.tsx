@@ -20,11 +20,13 @@ import { PaymentSection } from "./PaymentSection"
 const CartStats = ({
   subtotal,
   shipping,
+  processing,
   tax,
   total,
 }: {
   subtotal: string
   shipping: string
+  processing: number
   tax: string
   total: string
 }) => (
@@ -37,6 +39,10 @@ const CartStats = ({
     <div className="flex items-center justify-between">
       <p className="text-muted-foreground">Shipping</p>
       <p className="font-medium">{shipping}</p>
+    </div>
+    <div className="flex items-center justify-between">
+      <p className="text-muted-foreground">Processing</p>
+      <p className="font-medium">{processing}</p>
     </div>
     <div className="flex items-center justify-between">
       <p className="text-muted-foreground">Tax</p>
@@ -122,6 +128,7 @@ const ShowItems = () => {
       <CartStats
         subtotal={formatCurrency(total.subtotal)}
         shipping={formatCurrency(total.shipping)}
+        processing={formatCurrency(total.processing)}
         tax={
           total.tax === 0
             ? "Calculated at next step"
