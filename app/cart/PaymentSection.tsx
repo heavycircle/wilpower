@@ -70,9 +70,10 @@ export const PaymentSection = ({
 
   React.useEffect(() => {
     async function getCart() {
-      return await computeCart(cartItems, buyerInfo)
+      const cart = await computeCart(cartItems, buyerInfo)
+      setTotal(cart);
     }
-    getCart().then((v) => setTotal(v))
+    getCart()
   }, [cartItems, buyerInfo, setTotal])
 
   return (
