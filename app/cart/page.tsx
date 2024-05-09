@@ -26,7 +26,7 @@ const CartStats = ({
 }: {
   subtotal: string
   shipping: string
-  processing: number
+  processing: string
   tax: string
   total: string
 }) => (
@@ -69,13 +69,14 @@ const ShowItems = () => {
   const [total, setTotal] = React.useState<TotalTypes>({
     subtotal: 0,
     shipping: 0,
+    processing: 0,
     tax: 0,
     total: 0,
   })
 
   React.useEffect(() => {
     async function getCart() {
-      const cart = await computeCart(cartItems, buyerInfo)
+      const cart = (await computeCart(cartItems, buyerInfo)) as TotalTypes
       setTotal(cart)
     }
     getCart()
