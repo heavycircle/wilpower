@@ -35,7 +35,7 @@ const ItemVisual = ({ item }: { item: Item }) => {
     <div className="col-span-2 flex flex-col items-center gap-10">
       {!hidePrimary && (
         <Image
-          src={item.images[selected].url}
+          src={process.env.NEXT_PUBLIC_AWS_URL + item.images[selected].url}
           alt={item.images[selected].description}
           width={600}
           height={600}
@@ -48,7 +48,7 @@ const ItemVisual = ({ item }: { item: Item }) => {
             {item.images.map((img) => (
               <CarouselItem key={img.description} className="basis-full">
                 <Image
-                  src={img.url}
+                  src={process.env.NEXT_PUBLIC_AWS_URL + img.url}
                   alt={img.description}
                   width={570}
                   height={570}

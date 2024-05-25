@@ -10,14 +10,7 @@ import { Item } from "@/types/Item"
 import { formatCurrency } from "@/lib/utils"
 import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import {
   Dialog,
   DialogContent,
@@ -49,12 +42,12 @@ import {
 import { Textarea } from "@/components/ui/textarea"
 
 const quantitySchema = z.object({
-  XS: z.number().positive(),
-  S: z.number().positive(),
-  M: z.number().positive(),
-  L: z.number().positive(),
-  XL: z.number().positive(),
-  "2XL": z.number().positive(),
+  XS: z.number().nonnegative(),
+  S: z.number().nonnegative(),
+  M: z.number().nonnegative(),
+  L: z.number().nonnegative(),
+  XL: z.number().nonnegative(),
+  "2XL": z.number().nonnegative(),
 })
 
 const formSchema = z.object({
@@ -72,15 +65,25 @@ const ItemForm = ({
   onSubmit,
 }: {
   defaultForm: Item
-  onSubmit: (values: z.infer<typeof formSchema>) => void
+  onSubmit: (
+    values: z.infer<typeof formSchema>,
+    files: (File | undefined)[]
+  ) => void
 }) => {
+  // for the files
+  const [front, setFront] = React.useState<File | undefined>(undefined)
+  const [back, setBack] = React.useState<File | undefined>(undefined)
+  // for everything else
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: defaultForm,
   })
+  const submitForm = async (values: z.infer<typeof formSchema>) =>
+    onSubmit(values, [front, back])
+
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(submitForm)} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <FormField
             control={form.control}
@@ -102,7 +105,14 @@ const ItemForm = ({
               <FormItem>
                 <FormLabel>Price</FormLabel>
                 <FormControl>
-                  <Input placeholder="14.99" {...field} />
+                  <Input
+                    type="number"
+                    placeholder="0"
+                    {...field}
+                    onChange={(value) =>
+                      field.onChange(value.target.valueAsNumber)
+                    }
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -265,6 +275,26 @@ const ItemForm = ({
             )}
           />
         </div>
+        <div className="grid grid-cols-2 gap-6">
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="image-front">Image Front</Label>
+            <Input
+              type="file"
+              id="image-front"
+              accept="image/*"
+              onChange={(e) => setFront(e.target.files?.[0])}
+            />
+          </div>
+          <div className="flex flex-col gap-1.5">
+            <Label htmlFor="image-back">Image Back</Label>
+            <Input
+              type="file"
+              id="image-back"
+              accept="image/*"
+              onChange={(e) => setBack(e.target.files?.[0])}
+            />
+          </div>
+        </div>
         <DialogFooter>
           <Button type="submit">Save Changes</Button>
         </DialogFooter>
@@ -314,17 +344,43 @@ const AddInventoryItem = () => {
   const [error, setError] = React.useState<string>()
   const [success, setSuccess] = React.useState<string>()
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (
+    values: z.infer<typeof formSchema>,
+    files: (File | undefined)[]
+  ) => {
     setError("")
     setSuccess("")
 
-    const res = await fetch("/api/store", {
+    // upload files to AWS
+    if (!files) {
+      setError("No pictures were uploaded!")
+      return
+    }
+
+    const formData = new FormData()
+    files.forEach((file, index) => {
+      formData.append(`file${index}`, file as File)
+    })
+    const awsRes = await fetch("/api/s3/file-upload", {
+      method: "POST",
+      body: formData,
+    })
+
+    if (!awsRes.ok) return setError(await awsRes.text())
+    const filenames = await awsRes.json()
+
+    // add the items to the database
+    const dbRes = await fetch("/api/store", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(values),
+      body: JSON.stringify({
+        inv: values.name.toLowerCase().replace(" ", "-"),
+        images: filenames,
+        ...values,
+      }),
     })
-    if (!res.ok) setError(await res.text())
-    else setSuccess(await res.text())
+    if (!dbRes.ok) setError(await dbRes.text())
+    else setSuccess(await dbRes.text())
   }
 
   const emptyValues: Item = {
@@ -388,7 +444,10 @@ const EditInventoryItem = ({ item }: { item: Item }) => {
   const [error, setError] = React.useState<string>()
   const [success, setSuccess] = React.useState<string>()
 
-  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+  const onSubmit = async (
+    values: z.infer<typeof formSchema>,
+    files: (File | undefined)[]
+  ) => {
     setError("")
     setSuccess("")
 

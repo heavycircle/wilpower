@@ -6,12 +6,17 @@ import { z } from "zod"
 import clientPromise from "@/lib/mongodb"
 
 const quantitySchema = z.object({
-  XS: z.number().positive(),
-  S: z.number().positive(),
-  M: z.number().positive(),
-  L: z.number().positive(),
-  XL: z.number().positive(),
-  "2XL": z.number().positive(),
+  XS: z.number().nonnegative(),
+  S: z.number().nonnegative(),
+  M: z.number().nonnegative(),
+  L: z.number().nonnegative(),
+  XL: z.number().nonnegative(),
+  "2XL": z.number().nonnegative(),
+})
+
+const imageSchema = z.object({
+  url: z.string(),
+  description: z.string(),
 })
 
 export const POST = async (req: Request) => {
@@ -19,11 +24,13 @@ export const POST = async (req: Request) => {
     // validate request body
     const schema = z.object({
       name: z.string().min(2),
+      inv: z.string(),
       price: z.number().positive(),
       desc: z.object({
         material: z.string(),
         fit: z.string(),
       }),
+      images: z.array(imageSchema),
       quantity: quantitySchema,
     })
     const body = schema.safeParse(await req.json())

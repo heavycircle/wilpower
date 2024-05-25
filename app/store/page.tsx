@@ -7,6 +7,7 @@ import { motion } from "framer-motion"
 import Balancer from "react-wrap-balancer"
 
 import type { Item } from "@/types/Item"
+import { formatCurrency } from "@/lib/utils"
 import {
   Card,
   CardContent,
@@ -59,7 +60,9 @@ const StoreItem = ({ item, idx }: { item: Item; idx: number }) => {
       </CardHeader>
       <CardContent className="flex items-center justify-between">
         <CardTitle>{item.name}</CardTitle>
-        <CardDescription className="line-clamp-2">{item.price}</CardDescription>
+        <CardDescription className="line-clamp-2">
+          {formatCurrency(item.price)}
+        </CardDescription>
       </CardContent>
     </motion.div>
   )
